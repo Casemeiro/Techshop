@@ -1,59 +1,1398 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111315">
-<meta name="description" content="Find the right tech, understand your gear, and troubleshoot with confidence."><title>NEXTECH — Your tech, understood.</title>
-<style>
-:root{color-scheme:dark;--bg:#111315;--surface:#191c1f;--surface2:#22272b;--line:#3a4147;--text:#f4f5f6;--muted:#b5bdc3;--dim:#8d969e;--accent:#a7f36b;--ink:#14200e;--radius:16px;--max:1160px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#111;padding:10px;z-index:50}.skip:focus{left:12px;top:12px}.topbar{border-bottom:1px solid var(--line);background:#151719}.navrow{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;letter-spacing:.07em}.mark{display:grid;place-items:center;width:29px;height:29px;background:var(--accent);color:#111;border-radius:7px;font-weight:950}.brand-tail{color:var(--muted)}nav{display:flex;align-items:center;gap:26px}nav a{color:var(--muted);text-decoration:none;font-size:.94rem}nav a:hover{color:var(--text)}nav .navcta{border:1px solid var(--line);padding:9px 13px;border-radius:9px;color:var(--text)}.menu{display:none;color:var(--text);background:none;border:1px solid var(--line);padding:8px 12px;border-radius:9px}.hero{padding:70px 0 56px;border-bottom:1px solid var(--line)}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}.eyebrow{display:flex;align-items:center;gap:9px;color:var(--accent);font-size:.78rem;font-weight:850;letter-spacing:.11em;text-transform:uppercase;margin-bottom:16px}.eyebrow:before{content:"";width:20px;height:2px;background:currentColor}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(2.8rem,6.2vw,5.35rem);line-height:.98;letter-spacing:-.065em;margin-bottom:22px;font-weight:900}h1 em{font-style:normal;color:var(--accent)}.hero-copy{max-width:560px;color:var(--muted);font-size:1.08rem;margin-bottom:28px}.actions{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:45px;padding:11px 16px;border:1px solid transparent;border-radius:9px;font-weight:800;text-decoration:none;transition:background .16s ease,border-color .16s ease,transform .16s ease}.btn:hover{transform:translateY(-1px)}.primary{background:var(--accent);color:var(--ink)}.primary:hover{background:#bdff91}.secondary{border-color:var(--line);color:var(--text);background:transparent}.secondary:hover{background:var(--surface);border-color:#68737b}.hero-art{min-height:340px;position:relative;overflow:hidden;padding:25px;background:#1a1e21;border:1px solid #3b4349;border-radius:20px;display:flex;flex-direction:column;justify-content:space-between}.hero-art:before{content:"";position:absolute;width:220px;height:220px;border:1px solid #4a5359;border-radius:50%;right:-70px;top:-70px;box-shadow:0 0 0 24px #202528,0 0 0 25px #343c41,0 0 0 52px #1d2225,0 0 0 53px #30373c}.art-top,.art-bottom,.console{position:relative;z-index:1}.art-top{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:.78rem}.status{padding:5px 9px;border-radius:6px;background:#293a24;color:#d0ffb8;font-weight:800;font-size:.7rem;text-transform:uppercase}.status:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:7px}.console{width:min(100%,310px);aspect-ratio:1.42;margin:25px auto;border:2px solid #657078;border-radius:14px;background:linear-gradient(115deg,#394147,#15181a 55%,#2e363b);box-shadow:13px 14px 0 #101213;transform:skewY(-4deg)}.console:before{content:"";position:absolute;inset:13%;border:1px solid #4d575e;border-radius:8px;background:repeating-linear-gradient(90deg,transparent 0 12px,#353d42 13px 14px)}.console:after{content:"NX / 01";position:absolute;right:12px;bottom:9px;color:var(--accent);font-size:.65rem;font-weight:900;letter-spacing:.1em}.art-bottom{display:flex;justify-content:space-between;align-items:end;gap:14px}.art-bottom strong{display:block}.art-bottom span{color:var(--muted);font-size:.85rem}.art-code{color:var(--accent)!important;font-weight:850;letter-spacing:.08em}.trust{background:#151719;border-bottom:1px solid var(--line)}.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:18px 0}.trust-item{display:flex;align-items:center;gap:11px;color:var(--muted);font-size:.91rem}.trust-icon{display:grid;place-items:center;flex:0 0 32px;height:32px;border:1px solid #465057;border-radius:8px;color:var(--accent);font-weight:900}.section{padding:66px 0}.head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:26px}.head h2,.intro h2{font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.1;letter-spacing:-.045em;margin-bottom:8px}.head p{color:var(--muted);margin-bottom:0;max-width:590px}.searchbox{display:grid;grid-template-columns:1fr auto;gap:12px;padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--surface);margin-bottom:16px}.searchfield{display:flex;align-items:center;gap:12px;padding:0 10px;min-width:0}.searchfield svg{flex:none;color:var(--dim)}.searchfield input{width:100%;min-width:0;padding:10px 0;background:transparent;border:0;outline:0;color:var(--text)}.searchfield input::placeholder{color:#969fa6}.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}.chip{border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--muted);padding:8px 12px;font-size:.88rem}.chip:hover{color:var(--text);border-color:#68737b}.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--ink);font-weight:850}.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.product{min-width:0;overflow:hidden;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:14px;transition:border-color .16s ease,transform .16s ease}.product:hover{border-color:#68737b;transform:translateY(-2px)}.product[hidden]{display:none}.product-art{min-height:170px;display:grid;place-items:center;position:relative;overflow:hidden;background:#22272b;border-bottom:1px solid var(--line)}.product-art:before,.product-art:after{content:"";position:absolute;border:1px solid #485158;border-radius:50%}.product-art:before{width:145px;height:145px}.product-art:after{width:105px;height:105px}.art-label{position:absolute;top:12px;left:13px;z-index:2;color:var(--muted);font-size:.69rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}.symbol{position:relative;z-index:1;color:#eef1f2;font-size:3rem;font-weight:900;letter-spacing:-.08em;text-shadow:5px 6px 0 #101213}.shape-console{width:52px;height:108px;border:3px solid #d3d9dc;border-radius:8px 14px 8px 14px;background:linear-gradient(90deg,#424b52,#111315 48%,#68737a);font-size:0;transform:rotate(8deg);box-shadow:8px 7px 0 #101213}.shape-phone{width:54px;height:103px;border:3px solid #d3d9dc;border-radius:12px;background:linear-gradient(140deg,#454e55,#111315);font-size:0}.shape-phone:after{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:17px;height:4px;background:#171a1c;border-radius:4px}.shape-laptop{width:105px;height:67px;border:4px solid #cbd2d6;border-radius:6px;background:#121517;font-size:1.3rem;display:grid;place-items:center}.shape-laptop:after{content:"";position:absolute;width:122px;height:7px;left:-12px;bottom:-12px;border-radius:2px 2px 6px 6px;background:#a4afb5}.shape-headphones{width:86px;height:75px;border:9px solid #d5dbde;border-bottom:0;border-radius:50px 50px 0 0;font-size:0}.shape-headphones:before,.shape-headphones:after{content:"";position:absolute;bottom:-4px;width:21px;height:36px;background:#c7cdd1;border-radius:8px}.shape-headphones:before{left:-11px}.shape-headphones:after{right:-11px}.shape-gpu{width:110px;height:65px;border:3px solid #c4cdd1;border-radius:7px;background:#343c42;font-size:0}.shape-gpu:before,.shape-gpu:after{content:"";position:absolute;top:12px;width:29px;height:29px;border:3px solid #b9c3c8;border-radius:50%;background:#202428}.shape-gpu:before{left:12px}.shape-gpu:after{right:12px}.product-info{display:flex;flex-direction:column;flex:1;padding:17px}.category{color:var(--accent);font-size:.71rem;font-weight:850;text-transform:uppercase;letter-spacing:.09em;margin-bottom:6px}.product h3{font-size:1.12rem;line-height:1.25;letter-spacing:-.02em;margin-bottom:7px}.product p{color:var(--muted);font-size:.91rem;margin-bottom:18px}.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto}.price-note{color:var(--dim);font-size:.79rem}.smallbtn{background:#252b2f;color:var(--text);border:1px solid #4b555c;border-radius:8px;padding:8px 11px;font-size:.84rem;font-weight:800}.smallbtn:hover{border-color:var(--accent)}.empty{display:none;border:1px dashed #515a61;border-radius:13px;padding:30px;text-align:center;color:var(--muted)}.empty strong{display:block;color:var(--text);margin-bottom:5px}.support{background:#171a1c;border-block:1px solid var(--line)}.support-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start}.intro p{max-width:440px;color:var(--muted)}.warning{display:flex;gap:12px;margin-top:24px;padding:14px;border:1px solid #5a493b;border-radius:11px;background:#28221e;color:#e8c6a6;font-size:.88rem}.warning strong{display:block;color:#ffe0bd;margin-bottom:3px}.toolbox{padding:22px;border:1px solid var(--line);border-radius:15px;background:var(--surface)}.toolbox h3{margin-bottom:5px;font-size:1.23rem}.toolbox>p{color:var(--muted);font-size:.91rem;margin-bottom:18px}.formrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{margin-bottom:15px}.field label{display:block;font-size:.9rem;font-weight:750;margin-bottom:7px}.field select,.field textarea{width:100%;padding:11px 12px;border:1px solid #4b555c;border-radius:8px;background:#121517;color:var(--text)}.field textarea{min-height:88px;resize:vertical}.solution{display:none;margin-top:17px;padding:16px;border:1px solid #4b6340;border-radius:11px;background:#20291c}.solution h4{margin:0 0 9px;color:#d5ffbd}.solution p,.solution li{font-size:.91rem;color:#d5ddcf}.solution ol{padding-left:21px}.solution li{margin:7px 0}.solution .caution{color:#f5c2a7}.howgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.howitem{border-top:2px solid #485158;padding-top:16px}.step{color:var(--accent);font-size:.75rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.howitem h3{font-size:1.08rem;margin:10px 0 7px}.howitem p{font-size:.93rem;color:var(--muted);margin-bottom:0}.cta{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px;border:1px solid #454e54;border-radius:15px;background:#202427}.cta h2{font-size:clamp(1.5rem,3vw,2.15rem);letter-spacing:-.04em;margin-bottom:7px}.cta p{color:var(--muted);margin-bottom:0}footer{padding:27px 0;border-top:1px solid var(--line);background:#141618}.footerrow{display:flex;align-items:center;justify-content:space-between;gap:24px}.footnote{max-width:650px;color:var(--dim);font-size:.83rem;margin:12px 0 0}.footlinks{display:flex;gap:17px;flex-wrap:wrap}.footlinks a{color:var(--muted);font-size:.86rem;text-decoration:none}.footlinks a:hover{color:var(--text)}.toast{display:none;position:fixed;right:18px;bottom:18px;z-index:20;max-width:calc(100% - 36px);padding:13px 16px;background:var(--accent);color:var(--ink);font-weight:800;border-radius:9px;box-shadow:0 8px 24px #0005}
-@media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:30px}.hero-art{min-height:300px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.support-grid{grid-template-columns:1fr}.head{align-items:start}}
-@media(max-width:620px){.wrap{width:calc(100% - 28px)}.navrow{min-height:64px;flex-wrap:wrap}.menu{display:inline-flex}nav{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0;padding-bottom:14px}nav.open{display:flex}nav a{padding:11px 2px;border-top:1px solid #2c3236}nav .navcta{text-align:center;margin-top:7px;padding:10px}.hero{padding:42px 0 36px}h1{font-size:clamp(2.7rem,13vw,4rem)}.hero-copy{font-size:1rem}.hero-art{min-height:270px;padding:19px}.console{width:230px}.trust-grid{grid-template-columns:1fr;gap:12px}.section{padding:48px 0}.head{flex-direction:column;gap:10px;margin-bottom:21px}.searchbox{grid-template-columns:1fr}.searchbox .btn{width:100%}.products{grid-template-columns:1fr}.product-art{min-height:185px}.formrow{grid-template-columns:1fr;gap:0}.toolbox{padding:17px}.howgrid{grid-template-columns:1fr;gap:22px}.cta{flex-direction:column;align-items:stretch;padding:21px}.footerrow{flex-direction:column;align-items:start}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important}}
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111315">
+    <meta name="description" content="Find the right tech, understand your gear, and troubleshoot with confidence.">
+    <title>NEXTECH — Your tech, understood.</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #111315;
+            --surface: #191c1f;
+            --surface2: #22272b;
+            --line: #3a4147;
+            --text: #f4f5f6;
+            --muted: #b5bdc3;
+            --dim: #8d969e;
+            --accent: #a7f36b;
+            --ink: #14200e;
+            --radius: 16px;
+            --max: 1160px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif
+        }
+
+        a {
+            color: inherit
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px
+        }
+
+        .wrap {
+            width: min(var(--max), calc(100% - 40px));
+            margin: auto
+        }
+
+        .skip {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--accent);
+            color: #111;
+            padding: 10px;
+            z-index: 50
+        }
+
+        .skip:focus {
+            left: 12px;
+            top: 12px
+        }
+
+        .topbar {
+            border-bottom: 1px solid var(--line);
+            background: #151719
+        }
+
+        .navrow {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 900;
+            letter-spacing: .07em
+        }
+
+        .mark {
+            display: grid;
+            place-items: center;
+            width: 29px;
+            height: 29px;
+            background: var(--accent);
+            color: #111;
+            border-radius: 7px;
+            font-weight: 950
+        }
+
+        .brand-tail {
+            color: var(--muted)
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 26px
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: .94rem
+        }
+
+        nav a:hover {
+            color: var(--text)
+        }
+
+        nav .navcta {
+            border: 1px solid var(--line);
+            padding: 9px 13px;
+            border-radius: 9px;
+            color: var(--text)
+        }
+
+        .menu {
+            display: none;
+            color: var(--text);
+            background: none;
+            border: 1px solid var(--line);
+            padding: 8px 12px;
+            border-radius: 9px
+        }
+
+        .hero {
+            padding: 70px 0 56px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 48px;
+            align-items: center
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--accent);
+            font-size: .78rem;
+            font-weight: 850;
+            letter-spacing: .11em;
+            text-transform: uppercase;
+            margin-bottom: 16px
+        }
+
+        .eyebrow:before {
+            content: "";
+            width: 20px;
+            height: 2px;
+            background: currentColor
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 6.2vw, 5.35rem);
+            line-height: .98;
+            letter-spacing: -.065em;
+            margin-bottom: 22px;
+            font-weight: 900
+        }
+
+        h1 em {
+            font-style: normal;
+            color: var(--accent)
+        }
+
+        .hero-copy {
+            max-width: 560px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            margin-bottom: 28px
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 45px;
+            padding: 11px 16px;
+            border: 1px solid transparent;
+            border-radius: 9px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: background .16s ease, border-color .16s ease, transform .16s ease
+        }
+
+        .btn:hover {
+            transform: translateY(-1px)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--ink)
+        }
+
+        .primary:hover {
+            background: #bdff91
+        }
+
+        .secondary {
+            border-color: var(--line);
+            color: var(--text);
+            background: transparent
+        }
+
+        .secondary:hover {
+            background: var(--surface);
+            border-color: #68737b
+        }
+
+        .hero-art {
+            min-height: 340px;
+            position: relative;
+            overflow: hidden;
+            padding: 25px;
+            background: #1a1e21;
+            border: 1px solid #3b4349;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between
+        }
+
+        .hero-art:before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 1px solid #4a5359;
+            border-radius: 50%;
+            right: -70px;
+            top: -70px;
+            box-shadow: 0 0 0 24px #202528, 0 0 0 25px #343c41, 0 0 0 52px #1d2225, 0 0 0 53px #30373c
+        }
+
+        .art-top,
+        .art-bottom,
+        .console {
+            position: relative;
+            z-index: 1
+        }
+
+        .art-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            color: var(--muted);
+            font-size: .78rem
+        }
+
+        .status {
+            padding: 5px 9px;
+            border-radius: 6px;
+            background: #293a24;
+            color: #d0ffb8;
+            font-weight: 800;
+            font-size: .7rem;
+            text-transform: uppercase
+        }
+
+        .status:before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-right: 7px
+        }
+
+        .console {
+            width: min(100%, 310px);
+            aspect-ratio: 1.42;
+            margin: 25px auto;
+            border: 2px solid #657078;
+            border-radius: 14px;
+            background: linear-gradient(115deg, #394147, #15181a 55%, #2e363b);
+            box-shadow: 13px 14px 0 #101213;
+            transform: skewY(-4deg)
+        }
+
+        .console:before {
+            content: "";
+            position: absolute;
+            inset: 13%;
+            border: 1px solid #4d575e;
+            border-radius: 8px;
+            background: repeating-linear-gradient(90deg, transparent 0 12px, #353d42 13px 14px)
+        }
+
+        .console:after {
+            content: "NX / 01";
+            position: absolute;
+            right: 12px;
+            bottom: 9px;
+            color: var(--accent);
+            font-size: .65rem;
+            font-weight: 900;
+            letter-spacing: .1em
+        }
+
+        .art-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 14px
+        }
+
+        .art-bottom strong {
+            display: block
+        }
+
+        .art-bottom span {
+            color: var(--muted);
+            font-size: .85rem
+        }
+
+        .art-code {
+            color: var(--accent) !important;
+            font-weight: 850;
+            letter-spacing: .08em
+        }
+
+        .trust {
+            background: #151719;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            padding: 18px 0
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: var(--muted);
+            font-size: .91rem
+        }
+
+        .trust-icon {
+            display: grid;
+            place-items: center;
+            flex: 0 0 32px;
+            height: 32px;
+            border: 1px solid #465057;
+            border-radius: 8px;
+            color: var(--accent);
+            font-weight: 900
+        }
+
+        .section {
+            padding: 66px 0
+        }
+
+        .head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 26px
+        }
+
+        .head h2,
+        .intro h2 {
+            font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+            line-height: 1.1;
+            letter-spacing: -.045em;
+            margin-bottom: 8px
+        }
+
+        .head p {
+            color: var(--muted);
+            margin-bottom: 0;
+            max-width: 590px
+        }
+
+        .searchbox {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            padding: 13px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--surface);
+            margin-bottom: 16px
+        }
+
+        .searchfield {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 10px;
+            min-width: 0
+        }
+
+        .searchfield svg {
+            flex: none;
+            color: var(--dim)
+        }
+
+        .searchfield input {
+            width: 100%;
+            min-width: 0;
+            padding: 10px 0;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            color: var(--text)
+        }
+
+        .searchfield input::placeholder {
+            color: #969fa6
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px
+        }
+
+        .chip {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--muted);
+            padding: 8px 12px;
+            font-size: .88rem
+        }
+
+        .chip:hover {
+            color: var(--text);
+            border-color: #68737b
+        }
+
+        .chip[aria-pressed=true] {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--ink);
+            font-weight: 850
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .product {
+            min-width: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            transition: border-color .16s ease, transform .16s ease
+        }
+
+        .product:hover {
+            border-color: #68737b;
+            transform: translateY(-2px)
+        }
+
+        .product[hidden] {
+            display: none
+        }
+
+        .product-art {
+            min-height: 170px;
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
+            background: #22272b;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .product-art:before,
+        .product-art:after {
+            content: "";
+            position: absolute;
+            border: 1px solid #485158;
+            border-radius: 50%
+        }
+
+        .product-art:before {
+            width: 145px;
+            height: 145px
+        }
+
+        .product-art:after {
+            width: 105px;
+            height: 105px
+        }
+
+        .art-label {
+            position: absolute;
+            top: 12px;
+            left: 13px;
+            z-index: 2;
+            color: var(--muted);
+            font-size: .69rem;
+            font-weight: 850;
+            letter-spacing: .09em;
+            text-transform: uppercase
+        }
+
+        .symbol {
+            position: relative;
+            z-index: 1;
+            color: #eef1f2;
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -.08em;
+            text-shadow: 5px 6px 0 #101213
+        }
+
+        .shape-console {
+            width: 52px;
+            height: 108px;
+            border: 3px solid #d3d9dc;
+            border-radius: 8px 14px 8px 14px;
+            background: linear-gradient(90deg, #424b52, #111315 48%, #68737a);
+            font-size: 0;
+            transform: rotate(8deg);
+            box-shadow: 8px 7px 0 #101213
+        }
+
+        .shape-phone {
+            width: 54px;
+            height: 103px;
+            border: 3px solid #d3d9dc;
+            border-radius: 12px;
+            background: linear-gradient(140deg, #454e55, #111315);
+            font-size: 0
+        }
+
+        .shape-phone:after {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 17px;
+            height: 4px;
+            background: #171a1c;
+            border-radius: 4px
+        }
+
+        .shape-laptop {
+            width: 105px;
+            height: 67px;
+            border: 4px solid #cbd2d6;
+            border-radius: 6px;
+            background: #121517;
+            font-size: 1.3rem;
+            display: grid;
+            place-items: center
+        }
+
+        .shape-laptop:after {
+            content: "";
+            position: absolute;
+            width: 122px;
+            height: 7px;
+            left: -12px;
+            bottom: -12px;
+            border-radius: 2px 2px 6px 6px;
+            background: #a4afb5
+        }
+
+        .shape-headphones {
+            width: 86px;
+            height: 75px;
+            border: 9px solid #d5dbde;
+            border-bottom: 0;
+            border-radius: 50px 50px 0 0;
+            font-size: 0
+        }
+
+        .shape-headphones:before,
+        .shape-headphones:after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            width: 21px;
+            height: 36px;
+            background: #c7cdd1;
+            border-radius: 8px
+        }
+
+        .shape-headphones:before {
+            left: -11px
+        }
+
+        .shape-headphones:after {
+            right: -11px
+        }
+
+        .shape-gpu {
+            width: 110px;
+            height: 65px;
+            border: 3px solid #c4cdd1;
+            border-radius: 7px;
+            background: #343c42;
+            font-size: 0
+        }
+
+        .shape-gpu:before,
+        .shape-gpu:after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            width: 29px;
+            height: 29px;
+            border: 3px solid #b9c3c8;
+            border-radius: 50%;
+            background: #202428
+        }
+
+        .shape-gpu:before {
+            left: 12px
+        }
+
+        .shape-gpu:after {
+            right: 12px
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 17px
+        }
+
+        .category {
+            color: var(--accent);
+            font-size: .71rem;
+            font-weight: 850;
+            text-transform: uppercase;
+            letter-spacing: .09em;
+            margin-bottom: 6px
+        }
+
+        .product h3 {
+            font-size: 1.12rem;
+            line-height: 1.25;
+            letter-spacing: -.02em;
+            margin-bottom: 7px
+        }
+
+        .product p {
+            color: var(--muted);
+            font-size: .91rem;
+            margin-bottom: 18px
+        }
+
+        .card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: auto
+        }
+
+        .price-note {
+            color: var(--dim);
+            font-size: .79rem
+        }
+
+        .smallbtn {
+            background: #252b2f;
+            color: var(--text);
+            border: 1px solid #4b555c;
+            border-radius: 8px;
+            padding: 8px 11px;
+            font-size: .84rem;
+            font-weight: 800
+        }
+
+        .smallbtn:hover {
+            border-color: var(--accent)
+        }
+
+        .empty {
+            display: none;
+            border: 1px dashed #515a61;
+            border-radius: 13px;
+            padding: 30px;
+            text-align: center;
+            color: var(--muted)
+        }
+
+        .empty strong {
+            display: block;
+            color: var(--text);
+            margin-bottom: 5px
+        }
+
+        .support {
+            background: #171a1c;
+            border-block: 1px solid var(--line)
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 28px;
+            align-items: start
+        }
+
+        .intro p {
+            max-width: 440px;
+            color: var(--muted)
+        }
+
+        .warning {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            padding: 14px;
+            border: 1px solid #5a493b;
+            border-radius: 11px;
+            background: #28221e;
+            color: #e8c6a6;
+            font-size: .88rem
+        }
+
+        .warning strong {
+            display: block;
+            color: #ffe0bd;
+            margin-bottom: 3px
+        }
+
+        .toolbox {
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 15px;
+            background: var(--surface)
+        }
+
+        .toolbox h3 {
+            margin-bottom: 5px;
+            font-size: 1.23rem
+        }
+
+        .toolbox>p {
+            color: var(--muted);
+            font-size: .91rem;
+            margin-bottom: 18px
+        }
+
+        .formrow {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .field {
+            margin-bottom: 15px
+        }
+
+        .field label {
+            display: block;
+            font-size: .9rem;
+            font-weight: 750;
+            margin-bottom: 7px
+        }
+
+        .field select,
+        .field textarea {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid #4b555c;
+            border-radius: 8px;
+            background: #121517;
+            color: var(--text)
+        }
+
+        .field textarea {
+            min-height: 88px;
+            resize: vertical
+        }
+
+        .solution {
+            display: none;
+            margin-top: 17px;
+            padding: 16px;
+            border: 1px solid #4b6340;
+            border-radius: 11px;
+            background: #20291c
+        }
+
+        .solution h4 {
+            margin: 0 0 9px;
+            color: #d5ffbd
+        }
+
+        .solution p,
+        .solution li {
+            font-size: .91rem;
+            color: #d5ddcf
+        }
+
+        .solution ol {
+            padding-left: 21px
+        }
+
+        .solution li {
+            margin: 7px 0
+        }
+
+        .solution .caution {
+            color: #f5c2a7
+        }
+
+        .howgrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px
+        }
+
+        .howitem {
+            border-top: 2px solid #485158;
+            padding-top: 16px
+        }
+
+        .step {
+            color: var(--accent);
+            font-size: .75rem;
+            font-weight: 900;
+            letter-spacing: .1em;
+            text-transform: uppercase
+        }
+
+        .howitem h3 {
+            font-size: 1.08rem;
+            margin: 10px 0 7px
+        }
+
+        .howitem p {
+            font-size: .93rem;
+            color: var(--muted);
+            margin-bottom: 0
+        }
+
+        .cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 28px;
+            border: 1px solid #454e54;
+            border-radius: 15px;
+            background: #202427
+        }
+
+        .cta h2 {
+            font-size: clamp(1.5rem, 3vw, 2.15rem);
+            letter-spacing: -.04em;
+            margin-bottom: 7px
+        }
+
+        .cta p {
+            color: var(--muted);
+            margin-bottom: 0
+        }
+
+        footer {
+            padding: 27px 0;
+            border-top: 1px solid var(--line);
+            background: #141618
+        }
+
+        .footerrow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px
+        }
+
+        .footnote {
+            max-width: 650px;
+            color: var(--dim);
+            font-size: .83rem;
+            margin: 12px 0 0
+        }
+
+        .footlinks {
+            display: flex;
+            gap: 17px;
+            flex-wrap: wrap
+        }
+
+        .footlinks a {
+            color: var(--muted);
+            font-size: .86rem;
+            text-decoration: none
+        }
+
+        .footlinks a:hover {
+            color: var(--text)
+        }
+
+        .toast {
+            display: none;
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 20;
+            max-width: calc(100% - 36px);
+            padding: 13px 16px;
+            background: var(--accent);
+            color: var(--ink);
+            font-weight: 800;
+            border-radius: 9px;
+            box-shadow: 0 8px 24px #0005
+        }
+
+        @media(max-width:850px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 30px
+            }
+
+            .hero-art {
+                min-height: 300px
+            }
+
+            .products {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .support-grid {
+                grid-template-columns: 1fr
+            }
+
+            .head {
+                align-items: start
+            }
+        }
+
+        @media(max-width:620px) {
+            .wrap {
+                width: calc(100% - 28px)
+            }
+
+            .navrow {
+                min-height: 64px;
+                flex-wrap: wrap
+            }
+
+            .menu {
+                display: inline-flex
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding-bottom: 14px
+            }
+
+            nav.open {
+                display: flex
+            }
+
+            nav a {
+                padding: 11px 2px;
+                border-top: 1px solid #2c3236
+            }
+
+            nav .navcta {
+                text-align: center;
+                margin-top: 7px;
+                padding: 10px
+            }
+
+            .hero {
+                padding: 42px 0 36px
+            }
+
+            h1 {
+                font-size: clamp(2.7rem, 13vw, 4rem)
+            }
+
+            .hero-copy {
+                font-size: 1rem
+            }
+
+            .hero-art {
+                min-height: 270px;
+                padding: 19px
+            }
+
+            .console {
+                width: 230px
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 12px
+            }
+
+            .section {
+                padding: 48px 0
+            }
+
+            .head {
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 21px
+            }
+
+            .searchbox {
+                grid-template-columns: 1fr
+            }
+
+            .searchbox .btn {
+                width: 100%
+            }
+
+            .products {
+                grid-template-columns: 1fr
+            }
+
+            .product-art {
+                min-height: 185px
+            }
+
+            .formrow {
+                grid-template-columns: 1fr;
+                gap: 0
+            }
+
+            .toolbox {
+                padding: 17px
+            }
+
+            .howgrid {
+                grid-template-columns: 1fr;
+                gap: 22px
+            }
+
+            .cta {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 21px
+            }
+
+            .footerrow {
+                flex-direction: column;
+                align-items: start
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *:before,
+            *:after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important
+            }
+        }
+    </style>
 </head>
+
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="topbar"><div class="wrap navrow"><a class="brand" href="#home" aria-label="NEXTECH home"><span class="mark">N</span><span>NEX<span class="brand-tail">TECH</span></span></a><button class="menu" id="menuToggle" aria-expanded="false" aria-controls="nav">Menu</button><nav id="nav" aria-label="Main navigation"><a href="#products">Explore gear</a><a href="#troubleshoot">Troubleshoot</a><a href="#how">How it works</a><a class="navcta" href="#products">Find your next upgrade ↗</a></nav></div></header>
-<main id="main">
-<section class="hero" id="home"><div class="wrap hero-grid"><div><div class="eyebrow">Your personal tech command centre</div><h1>Your tech.<br><em>Understood.</em></h1><p class="hero-copy">Find gear that fits your setup, get clear answers about what it does, and work through common tech problems without the guesswork.</p><div class="actions"><a class="btn primary" href="#products">Explore the gear ↗</a><a class="btn secondary" href="#troubleshoot">Fix a problem ⌁</a></div></div><aside class="hero-art" aria-label="Stylised gaming console illustration"><div class="art-top"><span>HARDWARE / FIELD NOTES</span><span class="status">Ready when you are</span></div><div class="console" role="img" aria-label="Abstract gaming console"></div><div class="art-bottom"><div><strong>Make your setup work harder.</strong><span>Advice for the gear you already own.</span></div><span class="art-code">NX / 001</span></div></aside></div></section>
-<div class="trust"><div class="wrap trust-grid"><div class="trust-item"><span class="trust-icon" aria-hidden="true">⌕</span><span>Find gear by name or category</span></div><div class="trust-item"><span class="trust-icon" aria-hidden="true">↗</span><span>Explore places to shop</span></div><div class="trust-item"><span class="trust-icon" aria-hidden="true">✓</span><span>Practical troubleshooting steps</span></div></div></div>
-<section class="section" id="products"><div class="wrap"><div class="head"><div><div class="eyebrow">The gear desk</div><h2>What are you looking for?</h2><p>Search this starter catalogue to learn what a device does, what to check before buying, and where to look for it.</p></div></div><form class="searchbox" id="searchForm" role="search"><div class="searchfield"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="searchInput" type="search" placeholder="Try gaming laptop, headphones or PS5" aria-label="Search tech products"></div><button class="btn primary" type="submit">Search catalogue</button></form><div class="filters" role="group" aria-label="Filter products"><button class="chip" data-filter="all" aria-pressed="true" type="button">All gear</button><button class="chip" data-filter="gaming" aria-pressed="false" type="button">Gaming</button><button class="chip" data-filter="mobile" aria-pressed="false" type="button">Mobile</button><button class="chip" data-filter="audio" aria-pressed="false" type="button">Audio</button><button class="chip" data-filter="components" aria-pressed="false" type="button">PC components</button></div>
-<div class="products" id="productsGrid" aria-live="polite">
-<article class="product" data-category="gaming" data-search="playstation 5 ps5 console gaming games"><div class="product-art"><span class="art-label">Console / Gaming</span><div class="symbol shape-console" aria-hidden="true"></div></div><div class="product-info"><div class="category">Gaming</div><h3>PlayStation 5</h3><p>A home console for modern games, streaming apps and multiplayer sessions.</p><div class="card-bottom"><span class="price-note">Check current pricing</span><button class="smallbtn detail" data-product="ps5" type="button">View details ↗</button></div></div></article>
-<article class="product" data-category="mobile" data-search="iphone smartphone mobile phone apple"><div class="product-art"><span class="art-label">Mobile / Everyday</span><div class="symbol shape-phone" aria-hidden="true"></div></div><div class="product-info"><div class="category">Mobile</div><h3>iPhone</h3><p>A smartphone for communication, photos, apps, navigation and everyday tasks.</p><div class="card-bottom"><span class="price-note">Models vary by year</span><button class="smallbtn detail" data-product="iphone" type="button">View details ↗</button></div></div></article>
-<article class="product" data-category="gaming" data-search="gaming laptop pc notebook computer"><div class="product-art"><span class="art-label">PC / Portable</span><div class="symbol shape-laptop" aria-hidden="true">NX</div></div><div class="product-info"><div class="category">Gaming PCs</div><h3>Gaming laptop</h3><p>Portable PC performance for games, creative tools and demanding workloads.</p><div class="card-bottom"><span class="price-note">Specs matter most</span><button class="smallbtn detail" data-product="laptop" type="button">View details ↗</button></div></div></article>
-<article class="product" data-category="audio" data-search="wireless headphones headset audio bluetooth"><div class="product-art"><span class="art-label">Audio / Wireless</span><div class="symbol shape-headphones" aria-hidden="true"></div></div><div class="product-info"><div class="category">Audio</div><h3>Wireless headphones</h3><p>Listen without a cable, with comfort, battery life and connection quality to compare.</p><div class="card-bottom"><span class="price-note">Fit is personal</span><button class="smallbtn detail" data-product="headphones" type="button">View details ↗</button></div></div></article>
-<article class="product" data-category="components" data-search="graphics card gpu pc component gaming graphics"><div class="product-art"><span class="art-label">PC / Component</span><div class="symbol shape-gpu" aria-hidden="true"></div></div><div class="product-info"><div class="category">PC components</div><h3>Graphics card (GPU)</h3><p>Handles rendering for games and visual workloads. Compatibility is essential.</p><div class="card-bottom"><span class="price-note">Check your PC first</span><button class="smallbtn detail" data-product="gpu" type="button">View details ↗</button></div></div></article>
-<article class="product" data-category="gaming" data-search="gaming controller gamepad accessory"><div class="product-art"><span class="art-label">Gaming / Accessory</span><div class="symbol" aria-hidden="true">⌘</div></div><div class="product-info"><div class="category">Accessories</div><h3>Gaming controller</h3><p>A handheld input device for consoles, PCs and supported mobile games.</p><div class="card-bottom"><span class="price-note">Check device support</span><button class="smallbtn detail" data-product="controller" type="button">View details ↗</button></div></div></article>
-</div><div class="empty" id="empty"><strong>No matching gear found.</strong>Try a broader search or choose “All gear” to reset the filters.</div></div></section>
-<section class="section support" id="troubleshoot"><div class="wrap support-grid"><div class="intro"><div class="eyebrow">Support bay</div><h2>Something not working?<br>Start with the basics.</h2><p>Choose the device and symptom for a practical first-pass checklist. These guides cover common issues and do not replace the manufacturer's support instructions.</p><div class="warning"><span aria-hidden="true">!</span><div><strong>Safety first</strong>Unplug equipment before checking external cables. Never open a power supply or swollen battery. If you smell burning or see liquid damage, stop using the device.</div></div></div><div class="toolbox"><h3>Troubleshooting assistant</h3><p>Tell NEXTECH what is going wrong to see suggested checks.</p><form id="troubleForm"><div class="formrow"><div class="field"><label for="device">Device</label><select id="device" required><option value="">Choose a device</option><option value="console">Console</option><option value="phone">Phone</option><option value="laptop">Laptop / PC</option><option value="audio">Headphones / audio</option><option value="gpu">Graphics card</option><option value="controller">Controller</option><option value="other">Other device</option></select></div><div class="field"><label for="symptom">Main symptom</label><select id="symptom" required><option value="">Choose a symptom</option><option value="power">Won't turn on</option><option value="internet">Won't connect to Wi-Fi</option><option value="slow">Running slowly</option><option value="sound">No sound</option><option value="heat">Overheating</option><option value="battery">Battery / charging issue</option><option value="display">No picture / display issue</option></select></div></div><div class="field"><label for="notes">Extra details (optional)</label><textarea id="notes" placeholder="What have you tried? Any error message?"></textarea></div><button class="btn primary" type="submit">Show suggested checks ↗</button></form><div class="solution" id="solution" role="status" aria-live="polite"></div></div></div></section>
-<section class="section" id="how"><div class="wrap"><div class="head"><div><div class="eyebrow">A clearer route through tech</div><h2>Three steps. Less guesswork.</h2><p>Use NEXTECH as a starting point for understanding devices and deciding what to check next.</p></div></div><div class="howgrid"><article class="howitem"><span class="step">Step 01</span><h3>Find your device</h3><p>Search by product name or filter by category to get to relevant information faster.</p></article><article class="howitem"><span class="step">Step 02</span><h3>Understand the trade-offs</h3><p>Review use cases, key checks and compatibility questions before choosing gear.</p></article><article class="howitem"><span class="step">Step 03</span><h3>Take the next safe step</h3><p>Follow basic troubleshooting checks, then use official support when an issue needs expert help.</p></article></div></div></section>
-<section class="section" style="padding-top:0"><div class="wrap cta"><div><h2>Make your next tech decision a good one.</h2><p>Start with the device, the job it needs to do, and the details that matter.</p></div><a class="btn primary" href="#products">Browse the gear desk ↗</a></div></section>
-</main><footer><div class="wrap footerrow"><div><a class="brand" href="#home"><span class="mark">N</span><span>NEX<span class="brand-tail">TECH</span></span></a><p class="footnote">An independent tech guide demo. Product listings and troubleshooting are starter content, not live inventory, professional repair advice or real-time AI responses.</p></div><div class="footlinks"><a href="#products">Products</a><a href="#troubleshoot">Troubleshooting</a><a href="#home">Back to top ↑</a></div></div></footer><div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script>
-const details={
-ps5:{name:"PlayStation 5",category:"Gaming console",description:"A console designed to play current-generation games on a TV or monitor. It can also run supported streaming and entertainment apps.",checks:["Confirm whether you need the standard or digital edition and check included storage/accessories.","Check the display's HDMI input and supported resolution/refresh rate.","Compare game library, subscription costs and storage expansion options before buying."],shops:[["PlayStation official site","https://www.playstation.com/en-gb/"],["Amazon UK","https://www.amazon.co.uk/"],["Currys","https://www.currys.co.uk/"]] },
-iphone:{name:"iPhone",category:"Smartphone",description:"A smartphone for calls, messages, photography, navigation and apps. Features and compatibility differ by model and release year.",checks:["Compare storage, battery condition for used devices, camera features and supported iOS versions.","Check network/SIM compatibility and whether the phone is unlocked.","For a used phone, verify activation lock is removed and ask for proof of purchase."],shops:[["Apple UK","https://www.apple.com/uk/"],["Amazon UK","https://www.amazon.co.uk/"],["Currys","https://www.currys.co.uk/"]] },
-laptop:{name:"Gaming laptop",category:"Portable PC",description:"A portable computer that combines a screen, keyboard and internal components. Gaming performance depends on GPU, cooling and power limits.",checks:["Compare the exact GPU and CPU model, not just the product family name.","Check memory, SSD capacity, screen refresh rate, weight and ports.","Look for independent thermal/noise testing and verify the return policy."],shops:[["Search manufacturer stores","https://www.google.com/search?q=official+gaming+laptop+manufacturer+store"],["Amazon UK","https://www.amazon.co.uk/"],["Currys","https://www.currys.co.uk/"]] },
-headphones:{name:"Wireless headphones",category:"Audio",description:"Headphones connect over Bluetooth or a dedicated wireless receiver. Comfort, microphone quality, latency and battery life vary by model.",checks:["Check compatibility with your phone, console or computer.","For gaming, look for platform support and microphone performance.","Review comfort, replacement ear pads, battery life and return terms."],shops:[["Search manufacturer stores","https://www.google.com/search?q=official+wireless+headphone+manufacturer+store"],["Amazon UK","https://www.amazon.co.uk/"],["Argos","https://www.argos.co.uk/"]] },
-gpu:{name:"Graphics card (GPU)",category:"PC component",description:"A graphics card processes visual workloads. A new card must fit the case, work with the power supply and be supported by the rest of the system.",checks:["Measure case clearance and check the card's slot width and power connectors.","Check the recommended power supply and available PCIe power cables.","Compare benchmarks for the games/apps and resolution you actually use."],shops:[["Scan","https://www.scan.co.uk/"],["Overclockers UK","https://www.overclockers.co.uk/"],["Amazon UK","https://www.amazon.co.uk/"]] },
-controller:{name:"Gaming controller",category:"Gaming accessory",description:"A controller sends button, stick and trigger inputs to a console, PC or compatible mobile device.",checks:["Confirm support for your exact console, operating system or game.","Compare wired, Bluetooth and proprietary wireless connection options.","Check battery type, charging method, stick layout and warranty."],shops:[["Search official platform store","https://www.google.com/search?q=official+gaming+controller+store"],["Amazon UK","https://www.amazon.co.uk/"],["Argos","https://www.argos.co.uk/"]] }
-};
-const fixes={
-power:{title:"Start with power and connections",steps:["Check the wall socket with another safe device and confirm the power cable is firmly connected.","Disconnect non-essential accessories, wait 30 seconds, then reconnect and try once.","Check the manufacturer's guide for the exact model's power/reset procedure."],caution:"If there is a burning smell, unusual heat, liquid damage or a damaged cable, stop testing."},
-internet:{title:"Check the network path",steps:["Confirm other devices can access the same Wi-Fi network.","Restart the router using its normal controls, then restart the device.","Forget and rejoin the network, carefully re-entering the password. Check for a service outage."],caution:"Avoid factory-resetting the router or device until settings are saved and official instructions are checked."},
-slow:{title:"Reduce load before changing settings",steps:["Restart the device and close apps or tabs you are not using.","Check available storage and install system updates from the official settings menu.","Notice whether slowness happens in one app or everywhere, and when it began."],caution:"Do not install random cleaner tools or delete unfamiliar system files to speed things up."},
-sound:{title:"Trace the audio output",steps:["Raise the volume on both the device and the app, and check mute settings.","Open sound/output settings and select the intended speakers or headphones.","Reconnect Bluetooth or the audio cable and test with another app or known-good device."],caution:"If you hear crackling from a power adapter or smell burning, stop using it."},
-heat:{title:"Give the device room to cool",steps:["Save your work and shut the device down if it is unusually hot.","Place it on a hard, flat surface and clear external vents without inserting objects.","After it cools, check for blocked vents, demanding background apps and official cleaning guidance."],caution:"Do not open a power supply or dismantle a battery. Stop using a device that repeatedly overheats or smells unusual."},
-battery:{title:"Check the charging basics",steps:["Try a compatible, undamaged charger and cable rated for the device.","Inspect external ports for visible debris without inserting metal objects; check whether the outlet works.","Restart the device and review the manufacturer's battery-health or charging guidance."],caution:"If a battery is swollen, leaking or unusually hot, stop charging and using the device. Do not press or open it."},
-display:{title:"Check the display connection",steps:["Confirm the monitor/TV is on and set to the correct input.","Reconnect the video cable at both ends, or try another compatible cable/input if available.","Restart the source device and display, then check the manufacturer's model-specific guidance."],caution:"If a laptop screen is damaged or there is liquid damage, stop and seek qualified repair support."}
-};
-const search=document.getElementById('searchInput'),cards=[...document.querySelectorAll('.product')],chips=[...document.querySelectorAll('.chip')],empty=document.getElementById('empty');let active='all';
-function filterProducts(){const q=search.value.trim().toLowerCase();let count=0;cards.forEach(card=>{const show=(!q||(card.dataset.search+' '+card.innerText).toLowerCase().includes(q))&&(active==='all'||card.dataset.category===active);card.hidden=!show;if(show)count++});empty.style.display=count?'none':'block'}
-document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();filterProducts();document.getElementById('productsGrid').scrollIntoView({behavior:'smooth',block:'start'})});search.addEventListener('input',filterProducts);chips.forEach(chip=>chip.addEventListener('click',()=>{active=chip.dataset.filter;chips.forEach(c=>c.setAttribute('aria-pressed',String(c===chip)));filterProducts()}));
-const toast=document.getElementById('toast');let toastTimer;function notify(message){toast.textContent=message;toast.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.style.display='none',4500)}
-document.querySelectorAll('.detail').forEach(button=>button.addEventListener('click',()=>{const p=details[button.dataset.product];if(!p)return;const w=window.open('','_blank');if(!w){notify('Your browser blocked the detail window. Allow pop-ups for this site, then try again.');return}const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));w.document.open();w.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111315"><title>${esc(p.name)} | NEXTECH</title><style>:root{color-scheme:dark;--bg:#111315;--surface:#191c1f;--line:#3a4147;--text:#f4f5f6;--muted:#b5bdc3;--accent:#a7f36b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,sans-serif}.wrap{width:min(760px,calc(100% - 32px));margin:auto;padding:42px 0}.brand{color:var(--accent);font-weight:900;letter-spacing:.1em;font-size:.85rem}.back{display:inline-block;margin:25px 0;color:var(--accent)}h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.05;letter-spacing:-.05em;margin:0 0 8px}p{color:var(--muted)}h2{font-size:1.15rem;margin:24px 0 8px}.box{border:1px solid var(--line);background:var(--surface);border-radius:13px;padding:21px;margin-top:20px}li{margin:8px 0;color:#dce0e2}.links{display:flex;gap:9px;flex-wrap:wrap}.links a{border:1px solid #525d64;border-radius:8px;padding:9px 11px;text-decoration:none}.links a:hover{border-color:var(--accent)}.note{border-top:1px solid var(--line);padding-top:16px;margin-top:24px;font-size:.85rem}</style></head><body><main class="wrap"><div class="brand">NEXTECH / DEVICE NOTES</div><a class="back" href="${location.href}#products">← Back to the gear desk</a><h1>${esc(p.name)}</h1><p>${esc(p.category)}</p><div class="box"><p>${esc(p.description)}</p><h2>Before you buy</h2><ul>${p.checks.map(s=>`<li>${esc(s)}</li>`).join('')}</ul><h2>Places to start</h2><div class="links">${p.shops.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener noreferrer">${esc(n)} ↗</a>`).join('')}</div></div><p class="note">NEXTECH demo content. Prices and stock are not checked live. Confirm specifications, availability, delivery, warranty and return terms with each seller.</p></main></body></html>`);w.document.close()}));
-const deviceNotes={console:'For consoles, check the official status page and model-specific support guide before trying recovery options.',phone:'For phones, check the manufacturer support guide. Back up important data before updates or resets.',laptop:'For computers, save your work and avoid BIOS/firmware changes unless the manufacturer recommends them.',audio:'For audio gear, check the selected output, pairing mode and compatibility with your source device.',gpu:'For graphics cards, do not open the card or power supply. Check driver guidance from the GPU and PC manufacturers.',controller:'For controllers, check pairing mode, battery level, firmware guidance and platform compatibility.',other:'Use the exact model number to find the manufacturer’s official support steps.'};
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-document.getElementById('troubleForm').addEventListener('submit',e=>{e.preventDefault();const d=document.getElementById('device').value,s=document.getElementById('symptom').value,notes=document.getElementById('notes').value.trim(),f=fixes[s];if(!d||!f)return;const result=document.getElementById('solution');result.innerHTML=`<h4>${f.title}</h4><p><strong>Device:</strong> ${esc(document.getElementById('device').selectedOptions[0].text)}</p><ol>${f.steps.map(step=>`<li>${esc(step)}</li>`).join('')}</ol><p><strong>Device-specific note:</strong> ${esc(deviceNotes[d])}</p><p class="caution"><strong>Stop if:</strong> ${esc(f.caution)}</p>${notes?`<p><strong>Your notes:</strong> ${esc(notes)}</p>`:''}<p>If these checks do not help, record the exact model and any error code, then contact the manufacturer's support team or a qualified repair professional.</p>`;result.style.display='block';result.scrollIntoView({behavior:'smooth',block:'nearest'})});
-const menu=document.getElementById('menuToggle'),nav=document.getElementById('nav');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
-</script></body></html>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="topbar">
+        <div class="wrap navrow"><a class="brand" href="#home" aria-label="NEXTECH home"><span
+                    class="mark">N</span><span>NEX<span class="brand-tail">TECH</span></span></a><button class="menu"
+                id="menuToggle" aria-expanded="false" aria-controls="nav">Menu</button>
+            <nav id="nav" aria-label="Main navigation"><a href="#products">Explore gear</a><a
+                    href="#troubleshoot">Troubleshoot</a><a href="#how">How it works</a><a class="navcta"
+                    href="#products">Find your next upgrade ↗</a></nav>
+        </div>
+    </header>
+    <main id="main">
+        <section class="hero" id="home">
+            <div class="wrap hero-grid">
+                <div>
+                    <div class="eyebrow">Your personal tech command centre</div>
+                    <h1>Your tech.<br><em>Understood.</em></h1>
+                    <p class="hero-copy">Find gear that fits your setup, get clear answers about what it does, and work
+                        through common tech problems without the guesswork.</p>
+                    <div class="actions"><a class="btn primary" href="#products">Explore the gear ↗</a><a
+                            class="btn secondary" href="#troubleshoot">Fix a problem ⌁</a></div>
+                </div>
+                <aside class="hero-art" aria-label="Stylised gaming console illustration">
+                    <div class="art-top"><span>HARDWARE / FIELD NOTES</span><span class="status">Ready when you
+                            are</span></div>
+                    <div class="console" role="img" aria-label="Abstract gaming console"></div>
+                    <div class="art-bottom">
+                        <div><strong>Make your setup work harder.</strong><span>Advice for the gear you already
+                                own.</span></div><span class="art-code">NX / 001</span>
+                    </div>
+                </aside>
+            </div>
+        </section>
+        <div class="trust">
+            <div class="wrap trust-grid">
+                <div class="trust-item"><span class="trust-icon" aria-hidden="true">⌕</span><span>Find gear by name or
+                        category</span></div>
+                <div class="trust-item"><span class="trust-icon" aria-hidden="true">↗</span><span>Explore places to
+                        shop</span></div>
+                <div class="trust-item"><span class="trust-icon" aria-hidden="true">✓</span><span>Practical
+                        troubleshooting steps</span></div>
+            </div>
+        </div>
+        <section class="section" id="products">
+            <div class="wrap">
+                <div class="head">
+                    <div>
+                        <div class="eyebrow">The gear desk</div>
+                        <h2>What are you looking for?</h2>
+                        <p>Search this starter catalogue to learn what a device does, what to check before buying, and
+                            where to look for it.</p>
+                    </div>
+                </div>
+                <form class="searchbox" id="searchForm" role="search">
+                    <div class="searchfield"><svg viewBox="0 0 24 24" width="21" height="21" fill="none"
+                            stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <circle cx="10.8" cy="10.8" r="6.8" />
+                            <path d="m16 16 5 5" />
+                        </svg><input id="searchInput" type="search" placeholder="Try gaming laptop, headphones or PS5"
+                            aria-label="Search tech products"></div><button class="btn primary" type="submit">Search
+                        catalogue</button>
+                </form>
+                <div class="filters" role="group" aria-label="Filter products"><button class="chip" data-filter="all"
+                        aria-pressed="true" type="button">All gear</button><button class="chip" data-filter="gaming"
+                        aria-pressed="false" type="button">Gaming</button><button class="chip" data-filter="mobile"
+                        aria-pressed="false" type="button">Mobile</button><button class="chip" data-filter="audio"
+                        aria-pressed="false" type="button">Audio</button><button class="chip" data-filter="components"
+                        aria-pressed="false" type="button">PC components</button></div>
+                <div class="products" id="productsGrid" aria-live="polite">
+                    <article class="product" data-category="gaming"
+                        data-search="playstation 5 ps5 console gaming games">
+                        <div class="product-art"><span class="art-label">Console / Gaming</span>
+                            <div class="symbol shape-console" aria-hidden="true"></div>
+                        </div>
+                        <div class="product-info">
+                            <div class="category">Gaming</div>
+                            <h3>PlayStation 5</h3>
+                            <p>A home console for modern games, streaming apps and multiplayer sessions.</p>
+                            <div class="card-bottom"><span class="price-note">Check current pricing</span><button
+                                    class="smallbtn detail" data-product="ps5" type="button">View details ↗</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="product" data-category="mobile" data-search="iphone smartphone mobile phone apple">
+                        <div class="product-art"><span class="art-label">Mobile / Everyday</span>
+                            <div class="symbol shape-phone" aria-hidden="true"></div>
+                        </div>
+                        <div class="product-info">
+                            <div class="category">Mobile</div>
+                            <h3>iPhone</h3>
+                            <p>A smartphone for communication, photos, apps, navigation and everyday tasks.</p>
+                            <div class="card-bottom"><span class="price-note">Models vary by year</span><button
+                                    class="smallbtn detail" data-product="iphone" type="button">View details ↗</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="product" data-category="gaming" data-search="gaming laptop pc notebook computer">
+                        <div class="product-art"><span class="art-label">PC / Portable</span>
+                            <div class="symbol shape-laptop" aria-hidden="true">NX</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="category">Gaming PCs</div>
+                            <h3>Gaming laptop</h3>
+                            <p>Portable PC performance for games, creative tools and demanding workloads.</p>
+                            <div class="card-bottom"><span class="price-note">Specs matter most</span><button
+                                    class="smallbtn detail" data-product="laptop" type="button">View details ↗</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="product" data-category="audio"
+                        data-search="wireless headphones headset audio bluetooth">
+                        <div class="product-art"><span class="art-label">Audio / Wireless</span>
+                            <div class="symbol shape-headphones" aria-hidden="true"></div>
+                        </div>
+                        <div class="product-info">
+                            <div class="category">Audio</div>
+                            <h3>Wireless headphones</h3>
+                            <p>Listen without a cable, with comfort, battery life and connection quality to compare.</p>
+                            <div class="card-bottom"><span class="price-note">Fit is personal</span><button
+                                    class="smallbtn detail" data-product="headphones" type="button">View details
+                                    ↗</button></div>
+                        </div>
+                    </article>
+                    <article class="product" data-category="components"
+                        data-search="graphics card gpu pc component gaming graphics">
+                        <div class="product-art"><span class="art-label">PC / Component</span>
+                            <div class="symbol shape-gpu" aria-hidden="true"></div>
+                        </div>
+                        <div class="product-info">
+                            <div class="category">PC components</div>
+                            <h3>Graphics card (GPU)</h3>
+                            <p>Handles rendering for games and visual workloads. Compatibility is essential.</p>
+                            <div class="card-bottom"><span class="price-note">Check your PC first</span><button
+                                    class="smallbtn detail" data-product="gpu" type="button">View details ↗</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="product" data-category="gaming" data-search="gaming controller gamepad accessory">
+                        <div class="product-art"><span class="art-label">Gaming / Accessory</span>
+                            <div class="symbol" aria-hidden="true">⌘</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="category">Accessories</div>
+                            <h3>Gaming controller</h3>
+                            <p>A handheld input device for consoles, PCs and supported mobile games.</p>
+                            <div class="card-bottom"><span class="price-note">Check device support</span><button
+                                    class="smallbtn detail" data-product="controller" type="button">View details
+                                    ↗</button></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="empty" id="empty"><strong>No matching gear found.</strong>Try a broader search or choose
+                    “All gear” to reset the filters.</div>
+            </div>
+        </section>
+        <section class="section support" id="troubleshoot">
+            <div class="wrap support-grid">
+                <div class="intro">
+                    <div class="eyebrow">Support bay</div>
+                    <h2>Something not working?<br>Start with the basics.</h2>
+                    <p>Choose the device and symptom for a practical first-pass checklist. These guides cover common
+                        issues and do not replace the manufacturer's support instructions.</p>
+                    <div class="warning"><span aria-hidden="true">!</span>
+                        <div><strong>Safety first</strong>Unplug equipment before checking external cables. Never open a
+                            power supply or swollen battery. If you smell burning or see liquid damage, stop using the
+                            device.</div>
+                    </div>
+                </div>
+                <div class="toolbox">
+                    <h3>Troubleshooting assistant</h3>
+                    <p>Tell NEXTECH what is going wrong to see suggested checks.</p>
+                    <form id="troubleForm">
+                        <div class="formrow">
+                            <div class="field"><label for="device">Device</label><select id="device" required>
+                                    <option value="">Choose a device</option>
+                                    <option value="console">Console</option>
+                                    <option value="phone">Phone</option>
+                                    <option value="laptop">Laptop / PC</option>
+                                    <option value="audio">Headphones / audio</option>
+                                    <option value="gpu">Graphics card</option>
+                                    <option value="controller">Controller</option>
+                                    <option value="other">Other device</option>
+                                </select></div>
+                            <div class="field"><label for="symptom">Main symptom</label><select id="symptom" required>
+                                    <option value="">Choose a symptom</option>
+                                    <option value="power">Won't turn on</option>
+                                    <option value="internet">Won't connect to Wi-Fi</option>
+                                    <option value="slow">Running slowly</option>
+                                    <option value="sound">No sound</option>
+                                    <option value="heat">Overheating</option>
+                                    <option value="battery">Battery / charging issue</option>
+                                    <option value="display">No picture / display issue</option>
+                                </select></div>
+                        </div>
+                        <div class="field"><label for="notes">Extra details (optional)</label><textarea id="notes"
+                                placeholder="What have you tried? Any error message?"></textarea></div><button
+                            class="btn primary" type="submit">Show suggested checks ↗</button>
+                    </form>
+                    <div class="solution" id="solution" role="status" aria-live="polite"></div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="how">
+            <div class="wrap">
+                <div class="head">
+                    <div>
+                        <div class="eyebrow">A clearer route through tech</div>
+                        <h2>Three steps. Less guesswork.</h2>
+                        <p>Use NEXTECH as a starting point for understanding devices and deciding what to check next.
+                        </p>
+                    </div>
+                </div>
+                <div class="howgrid">
+                    <article class="howitem"><span class="step">Step 01</span>
+                        <h3>Find your device</h3>
+                        <p>Search by product name or filter by category to get to relevant information faster.</p>
+                    </article>
+                    <article class="howitem"><span class="step">Step 02</span>
+                        <h3>Understand the trade-offs</h3>
+                        <p>Review use cases, key checks and compatibility questions before choosing gear.</p>
+                    </article>
+                    <article class="howitem"><span class="step">Step 03</span>
+                        <h3>Take the next safe step</h3>
+                        <p>Follow basic troubleshooting checks, then use official support when an issue needs expert
+                            help.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="section" style="padding-top:0">
+            <div class="wrap cta">
+                <div>
+                    <h2>Make your next tech decision a good one.</h2>
+                    <p>Start with the device, the job it needs to do, and the details that matter.</p>
+                </div><a class="btn primary" href="#products">Browse the gear desk ↗</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="wrap footerrow">
+            <div><a class="brand" href="#home"><span class="mark">N</span><span>NEX<span
+                            class="brand-tail">TECH</span></span></a>
+                <p class="footnote">An independent tech guide demo. Product listings and troubleshooting are starter
+                    content, not live inventory, professional repair advice or real-time AI responses.</p>
+            </div>
+            <div class="footlinks"><a href="#products">Products</a><a href="#troubleshoot">Troubleshooting</a><a
+                    href="#home">Back to top ↑</a></div>
+        </div>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script>
+        const details = {
+            ps5: { name: "PlayStation 5", category: "Gaming console", description: "A console designed to play current-generation games on a TV or monitor. It can also run supported streaming and entertainment apps.", checks: ["Confirm whether you need the standard or digital edition and check included storage/accessories.", "Check the display's HDMI input and supported resolution/refresh rate.", "Compare game library, subscription costs and storage expansion options before buying."], shops: [["PlayStation official site", "https://www.playstation.com/en-gb/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]] },
+            iphone: { name: "iPhone", category: "Smartphone", description: "A smartphone for calls, messages, photography, navigation and apps. Features and compatibility differ by model and release year.", checks: ["Compare storage, battery condition for used devices, camera features and supported iOS versions.", "Check network/SIM compatibility and whether the phone is unlocked.", "For a used phone, verify activation lock is removed and ask for proof of purchase."], shops: [["Apple UK", "https://www.apple.com/uk/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]] },
+            laptop: { name: "Gaming laptop", category: "Portable PC", description: "A portable computer that combines a screen, keyboard and internal components. Gaming performance depends on GPU, cooling and power limits.", checks: ["Compare the exact GPU and CPU model, not just the product family name.", "Check memory, SSD capacity, screen refresh rate, weight and ports.", "Look for independent thermal/noise testing and verify the return policy."], shops: [["Search manufacturer stores", "https://www.google.com/search?q=official+gaming+laptop+manufacturer+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]] },
+            headphones: { name: "Wireless headphones", category: "Audio", description: "Headphones connect over Bluetooth or a dedicated wireless receiver. Comfort, microphone quality, latency and battery life vary by model.", checks: ["Check compatibility with your phone, console or computer.", "For gaming, look for platform support and microphone performance.", "Review comfort, replacement ear pads, battery life and return terms."], shops: [["Search manufacturer stores", "https://www.google.com/search?q=official+wireless+headphone+manufacturer+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Argos", "https://www.argos.co.uk/"]] },
+            gpu: { name: "Graphics card (GPU)", category: "PC component", description: "A graphics card processes visual workloads. A new card must fit the case, work with the power supply and be supported by the rest of the system.", checks: ["Measure case clearance and check the card's slot width and power connectors.", "Check the recommended power supply and available PCIe power cables.", "Compare benchmarks for the games/apps and resolution you actually use."], shops: [["Scan", "https://www.scan.co.uk/"], ["Overclockers UK", "https://www.overclockers.co.uk/"], ["Amazon UK", "https://www.amazon.co.uk/"]] },
+            controller: { name: "Gaming controller", category: "Gaming accessory", description: "A controller sends button, stick and trigger inputs to a console, PC or compatible mobile device.", checks: ["Confirm support for your exact console, operating system or game.", "Compare wired, Bluetooth and proprietary wireless connection options.", "Check battery type, charging method, stick layout and warranty."], shops: [["Search official platform store", "https://www.google.com/search?q=official+gaming+controller+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Argos", "https://www.argos.co.uk/"]] }
+        };
+        const fixes = {
+            power: { title: "Start with power and connections", steps: ["Check the wall socket with another safe device and confirm the power cable is firmly connected.", "Disconnect non-essential accessories, wait 30 seconds, then reconnect and try once.", "Check the manufacturer's guide for the exact model's power/reset procedure."], caution: "If there is a burning smell, unusual heat, liquid damage or a damaged cable, stop testing." },
+            internet: { title: "Check the network path", steps: ["Confirm other devices can access the same Wi-Fi network.", "Restart the router using its normal controls, then restart the device.", "Forget and rejoin the network, carefully re-entering the password. Check for a service outage."], caution: "Avoid factory-resetting the router or device until settings are saved and official instructions are checked." },
+            slow: { title: "Reduce load before changing settings", steps: ["Restart the device and close apps or tabs you are not using.", "Check available storage and install system updates from the official settings menu.", "Notice whether slowness happens in one app or everywhere, and when it began."], caution: "Do not install random cleaner tools or delete unfamiliar system files to speed things up." },
+            sound: { title: "Trace the audio output", steps: ["Raise the volume on both the device and the app, and check mute settings.", "Open sound/output settings and select the intended speakers or headphones.", "Reconnect Bluetooth or the audio cable and test with another app or known-good device."], caution: "If you hear crackling from a power adapter or smell burning, stop using it." },
+            heat: { title: "Give the device room to cool", steps: ["Save your work and shut the device down if it is unusually hot.", "Place it on a hard, flat surface and clear external vents without inserting objects.", "After it cools, check for blocked vents, demanding background apps and official cleaning guidance."], caution: "Do not open a power supply or dismantle a battery. Stop using a device that repeatedly overheats or smells unusual." },
+            battery: { title: "Check the charging basics", steps: ["Try a compatible, undamaged charger and cable rated for the device.", "Inspect external ports for visible debris without inserting metal objects; check whether the outlet works.", "Restart the device and review the manufacturer's battery-health or charging guidance."], caution: "If a battery is swollen, leaking or unusually hot, stop charging and using the device. Do not press or open it." },
+            display: { title: "Check the display connection", steps: ["Confirm the monitor/TV is on and set to the correct input.", "Reconnect the video cable at both ends, or try another compatible cable/input if available.", "Restart the source device and display, then check the manufacturer's model-specific guidance."], caution: "If a laptop screen is damaged or there is liquid damage, stop and seek qualified repair support." }
+        };
+        const search = document.getElementById('searchInput'), cards = [...document.querySelectorAll('.product')], chips = [...document.querySelectorAll('.chip')], empty = document.getElementById('empty'); let active = 'all';
+        function filterProducts() { const q = search.value.trim().toLowerCase(); let count = 0; cards.forEach(card => { const show = (!q || (card.dataset.search + ' ' + card.innerText).toLowerCase().includes(q)) && (active === 'all' || card.dataset.category === active); card.hidden = !show; if (show) count++ }); empty.style.display = count ? 'none' : 'block' }
+        document.getElementById('searchForm').addEventListener('submit', e => { e.preventDefault(); filterProducts(); document.getElementById('productsGrid').scrollIntoView({ behavior: 'smooth', block: 'start' }) }); search.addEventListener('input', filterProducts); chips.forEach(chip => chip.addEventListener('click', () => { active = chip.dataset.filter; chips.forEach(c => c.setAttribute('aria-pressed', String(c === chip))); filterProducts() }));
+        const toast = document.getElementById('toast'); let toastTimer; function notify(message) { toast.textContent = message; toast.style.display = 'block'; clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.style.display = 'none', 4500) }
+        document.querySelectorAll('.detail').forEach(button => button.addEventListener('click', () => { const p = details[button.dataset.product]; if (!p) return; const w = window.open('', '_blank'); if (!w) { notify('Your browser blocked the detail window. Allow pop-ups for this site, then try again.'); return } const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); w.document.open(); w.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111315"><title>${esc(p.name)} | NEXTECH</title><style>:root{color-scheme:dark;--bg:#111315;--surface:#191c1f;--line:#3a4147;--text:#f4f5f6;--muted:#b5bdc3;--accent:#a7f36b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,sans-serif}.wrap{width:min(760px,calc(100% - 32px));margin:auto;padding:42px 0}.brand{color:var(--accent);font-weight:900;letter-spacing:.1em;font-size:.85rem}.back{display:inline-block;margin:25px 0;color:var(--accent)}h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.05;letter-spacing:-.05em;margin:0 0 8px}p{color:var(--muted)}h2{font-size:1.15rem;margin:24px 0 8px}.box{border:1px solid var(--line);background:var(--surface);border-radius:13px;padding:21px;margin-top:20px}li{margin:8px 0;color:#dce0e2}.links{display:flex;gap:9px;flex-wrap:wrap}.links a{border:1px solid #525d64;border-radius:8px;padding:9px 11px;text-decoration:none}.links a:hover{border-color:var(--accent)}.note{border-top:1px solid var(--line);padding-top:16px;margin-top:24px;font-size:.85rem}</style></head><body><main class="wrap"><div class="brand">NEXTECH / DEVICE NOTES</div><a class="back" href="${location.href}#products">← Back to the gear desk</a><h1>${esc(p.name)}</h1><p>${esc(p.category)}</p><div class="box"><p>${esc(p.description)}</p><h2>Before you buy</h2><ul>${p.checks.map(s => `<li>${esc(s)}</li>`).join('')}</ul><h2>Places to start</h2><div class="links">${p.shops.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${esc(n)} ↗</a>`).join('')}</div></div><p class="note">NEXTECH demo content. Prices and stock are not checked live. Confirm specifications, availability, delivery, warranty and return terms with each seller.</p></main></body></html>`); w.document.close() }));
+        const deviceNotes = { console: 'For consoles, check the official status page and model-specific support guide before trying recovery options.', phone: 'For phones, check the manufacturer support guide. Back up important data before updates or resets.', laptop: 'For computers, save your work and avoid BIOS/firmware changes unless the manufacturer recommends them.', audio: 'For audio gear, check the selected output, pairing mode and compatibility with your source device.', gpu: 'For graphics cards, do not open the card or power supply. Check driver guidance from the GPU and PC manufacturers.', controller: 'For controllers, check pairing mode, battery level, firmware guidance and platform compatibility.', other: 'Use the exact model number to find the manufacturer’s official support steps.' };
+        function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) }
+        document.getElementById('troubleForm').addEventListener('submit', e => { e.preventDefault(); const d = document.getElementById('device').value, s = document.getElementById('symptom').value, notes = document.getElementById('notes').value.trim(), f = fixes[s]; if (!d || !f) return; const result = document.getElementById('solution'); result.innerHTML = `<h4>${f.title}</h4><p><strong>Device:</strong> ${esc(document.getElementById('device').selectedOptions[0].text)}</p><ol>${f.steps.map(step => `<li>${esc(step)}</li>`).join('')}</ol><p><strong>Device-specific note:</strong> ${esc(deviceNotes[d])}</p><p class="caution"><strong>Stop if:</strong> ${esc(f.caution)}</p>${notes ? `<p><strong>Your notes:</strong> ${esc(notes)}</p>` : ''}<p>If these checks do not help, record the exact model and any error code, then contact the manufacturer's support team or a qualified repair professional.</p>`; result.style.display = 'block'; result.scrollIntoView({ behavior: 'smooth', block: 'nearest' }) });
+        const menu = document.getElementById('menuToggle'), nav = document.getElementById('nav'); menu.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', String(open)) }); nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false') }));
+    </script>
+</body>
+
+</html>
