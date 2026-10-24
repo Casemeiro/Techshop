@@ -1,3 +1,31 @@
+// Check if CONFIG object exists safely
+const getApiKey = () => (typeof CONFIG !== 'undefined' && CONFIG.YOUTUBE_API_KEY) ? CONFIG.YOUTUBE_API_KEY : '';
+
+// Helper function to query YouTube Data API v3 dynamically
+async function fetchYouTubeVideos(deviceName) {
+    const apiKey = getApiKey();
+    if (!apiKey || apiKey === "AIzaSyYourActualAPIKeyHere") {
+        console.warn("YouTube API Key not configured in config.js");
+        return [];
+    }
+
+    const query = encodeURIComponent(`${deviceName} repair teardown guide`);
+    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${query}&type=video&key=${apiKey}`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('YouTube API request failed');
+        const data = await response.json();
+        return data.items.map(item => [
+            item.snippet.title,
+            `https://www.youtube.com/watch?v=${item.id.videoId}`
+        ]);
+    } catch (error) {
+        console.error('Error fetching YouTube API data:', error);
+        return [];
+    }
+}
+
 // Backend DB simulation storage (persisted in memory / localStorage simulation)
 const defaultDetails = {
     ps5: { name: "PlayStation 5", category: "Gaming console — Repair & Teardown Manual", description: "A comprehensive repository of troubleshooting, teardowns, and repair guides designed to help you maintain your console.", checks: ["Examine Torx security screw requirements and modular faceplate removal steps.", "Check the HDMI port pins for bending or physical deformation before replacing.", "Review fan cleaning procedures to address loud fan or overheating warnings."], shops: [["PlayStation official site", "https://www.playstation.com/en-gb/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]], youtubeLinks: [["PS5 Official Teardown Guide", "https://www.youtube.com/watch?v=CaAY-iVUNjQ"]] },
@@ -81,10 +109,19 @@ document.getElementById('backendForm').addEventListener('submit', e => {
     }
 });
 
-document.querySelectorAll('.detail').forEach(button => button.addEventListener('click', () => {
+document.querySelectorAll('.detail').forEach(button => button.addEventListener('click', async () => {
     const pKey = button.dataset.product;
     const p = details[pKey];
     if (!p) return;
+
+    // Optional: Fetch live videos from API if configured
+    if (getApiKey()) {
+        const liveVideos = await fetchYouTubeVideos(p.name);
+        if (liveVideos.length > 0) {
+            p.youtubeLinks = [...(p.youtubeLinks || []), ...liveVideos];
+        }
+    }
+
     const w = window.open('', '_blank');
     if (!w) { notify('Your browser blocked the detail window. Allow pop-ups for this site, then try again.'); return; }
     const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
