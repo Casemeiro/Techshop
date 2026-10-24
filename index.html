@@ -80,7 +80,10 @@
 
         .topbar {
             border-bottom: 1px solid var(--line);
-            background: #151719
+            background: #151719;
+            position: sticky;
+            top: 0;
+            z-index: 40;
         }
 
         .navrow {
@@ -147,8 +150,64 @@
             border-radius: 9px
         }
 
+        /* iFixit-Inspired Layout Adjustments for Main Hub / Category Browse */
+        .ifixit-layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .sidebar-filters {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 20px;
+            position: sticky;
+            top: 96px;
+        }
+
+        .sidebar-filters h3 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .sidebar-filters .filters {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 0;
+        }
+
+        .sidebar-filters .chip {
+            text-align: left;
+            width: 100%;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 0.92rem;
+            background: transparent;
+            color: var(--muted);
+        }
+
+        .sidebar-filters .chip:hover {
+            background: var(--surface2);
+            color: var(--text);
+            border-color: var(--line);
+        }
+
+        .sidebar-filters .chip[aria-pressed=true] {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--ink);
+            font-weight: 850;
+        }
+
         .hero {
-            padding: 70px 0 56px;
+            padding: 50px 0 40px;
             border-bottom: 1px solid var(--line)
         }
 
@@ -186,7 +245,7 @@
         }
 
         h1 {
-            font-size: clamp(2.8rem, 6.2vw, 5.35rem);
+            font-size: clamp(2.5rem, 5.2vw, 4.35rem);
             line-height: .98;
             letter-spacing: -.065em;
             margin-bottom: 22px;
@@ -201,7 +260,7 @@
         .hero-copy {
             max-width: 560px;
             color: var(--muted);
-            font-size: 1.08rem;
+            font-size: 1.03rem;
             margin-bottom: 28px
         }
 
@@ -250,7 +309,7 @@
         }
 
         .hero-art {
-            min-height: 340px;
+            min-height: 300px;
             position: relative;
             overflow: hidden;
             padding: 25px;
@@ -311,9 +370,9 @@
         }
 
         .console {
-            width: min(100%, 310px);
+            width: min(100%, 280px);
             aspect-ratio: 1.42;
-            margin: 25px auto;
+            margin: 20px auto;
             border: 2px solid #657078;
             border-radius: 14px;
             background: linear-gradient(115deg, #394147, #15181a 55%, #2e363b);
@@ -395,7 +454,7 @@
         }
 
         .section {
-            padding: 66px 0
+            padding: 50px 0
         }
 
         .head {
@@ -403,12 +462,12 @@
             align-items: end;
             justify-content: space-between;
             gap: 24px;
-            margin-bottom: 26px
+            margin-bottom: 24px
         }
 
         .head h2,
         .intro h2 {
-            font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
             line-height: 1.1;
             letter-spacing: -.045em;
             margin-bottom: 8px
@@ -428,7 +487,7 @@
             border: 1px solid var(--line);
             border-radius: 14px;
             background: var(--surface);
-            margin-bottom: 16px
+            margin-bottom: 24px
         }
 
         .searchfield {
@@ -458,34 +517,6 @@
             color: #969fa6
         }
 
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px
-        }
-
-        .chip {
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: transparent;
-            color: var(--muted);
-            padding: 8px 12px;
-            font-size: .88rem
-        }
-
-        .chip:hover {
-            color: var(--text);
-            border-color: #68737b
-        }
-
-        .chip[aria-pressed=true] {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--ink);
-            font-weight: 850
-        }
-
         .products {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -513,7 +544,7 @@
         }
 
         .product-art {
-            min-height: 170px;
+            min-height: 160px;
             display: grid;
             place-items: center;
             position: relative;
@@ -735,7 +766,8 @@
             border-radius: 13px;
             padding: 30px;
             text-align: center;
-            color: var(--muted)
+            color: var(--muted);
+            grid-column: 1 / -1;
         }
 
         .empty strong {
@@ -971,7 +1003,24 @@
             }
 
             .hero-art {
-                min-height: 300px
+                min-height: 270px
+            }
+
+            .ifixit-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar-filters {
+                position: static;
+            }
+
+            .sidebar-filters .filters {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .sidebar-filters .chip {
+                width: auto;
             }
 
             .products {
@@ -1026,24 +1075,24 @@
             }
 
             .hero {
-                padding: 42px 0 36px
+                padding: 35px 0 30px
             }
 
             h1 {
-                font-size: clamp(2.7rem, 13vw, 4rem)
+                font-size: clamp(2.3rem, 11vw, 3.5rem)
             }
 
             .hero-copy {
-                font-size: 1rem
+                font-size: .98rem
             }
 
             .hero-art {
-                min-height: 270px;
+                min-height: 240px;
                 padding: 19px
             }
 
             .console {
-                width: 230px
+                width: 210px
             }
 
             .trust-grid {
@@ -1052,7 +1101,7 @@
             }
 
             .section {
-                padding: 48px 0
+                padding: 38px 0
             }
 
             .head {
@@ -1074,7 +1123,7 @@
             }
 
             .product-art {
-                min-height: 185px
+                min-height: 160px
             }
 
             .formrow {
@@ -1121,51 +1170,45 @@
         <div class="wrap navrow"><a class="brand" href="#home" aria-label="NEXTECH home"><span
                     class="mark">N</span><span>NEX<span class="brand-tail">TECH</span></span></a><button class="menu"
                 id="menuToggle" aria-expanded="false" aria-controls="nav">Menu</button>
-            <nav id="nav" aria-label="Main navigation"><a href="#products">Explore gear</a><a
+            <nav id="nav" aria-label="Main navigation"><a href="#products">Explore gear & guides</a><a
                     href="#troubleshoot">Troubleshoot</a><a href="#how">How it works</a><a class="navcta"
-                    href="#products">Find your next upgrade ↗</a></nav>
+                    href="#products">Find your repair guide ↗</a></nav>
         </div>
     </header>
     <main id="main">
         <section class="hero" id="home">
             <div class="wrap hero-grid">
                 <div>
-                    <div class="eyebrow">Your personal tech command centre</div>
-                    <h1>Your tech.<br><em>Understood.</em></h1>
-                    <p class="hero-copy">Find gear that fits your setup, get clear answers about what it does, and work
-                        through common tech problems without the guesswork.</p>
-                    <div class="actions"><a class="btn primary" href="#products">Explore the gear ↗</a><a
+                    <div class="eyebrow">Your community repair & tech hub</div>
+                    <h1>Fix your tech.<br><em>Understood.</em></h1>
+                    <p class="hero-copy">Access structured repair manuals, explore device teardowns, and work
+                        through common tech problems with step-by-step guidance without the guesswork.</p>
+                    <div class="actions"><a class="btn primary" href="#products">Explore device guides ↗</a><a
                             class="btn secondary" href="#troubleshoot">Fix a problem ⌁</a></div>
                 </div>
                 <aside class="hero-art" aria-label="Stylised gaming console illustration">
-                    <div class="art-top"><span>HARDWARE / FIELD NOTES</span><span class="status">Ready when you
-                            are</span></div>
+                    <div class="art-top"><span>REPAIR / FIELD NOTES</span><span class="status">Ready to repair</span></div>
                     <div class="console" role="img" aria-label="Abstract gaming console"></div>
                     <div class="art-bottom">
-                        <div><strong>Make your setup work harder.</strong><span>Advice for the gear you already
-                                own.</span></div><span class="art-code">NX / 001</span>
+                        <div><strong>Make your gear last longer.</strong><span>Teardowns and fixes for devices you own.</span></div><span class="art-code">NX / 001</span>
                     </div>
                 </aside>
             </div>
         </section>
         <div class="trust">
             <div class="wrap trust-grid">
-                <div class="trust-item"><span class="trust-icon" aria-hidden="true">⌕</span><span>Find gear by name or
-                        category</span></div>
-                <div class="trust-item"><span class="trust-icon" aria-hidden="true">↗</span><span>Explore places to
-                        shop</span></div>
-                <div class="trust-item"><span class="trust-icon" aria-hidden="true">✓</span><span>Practical
-                        troubleshooting steps</span></div>
+                <div class="trust-item"><span class="trust-icon" aria-hidden="true">⌕</span><span>Find guides by name or device type</span></div>
+                <div class="trust-item"><span class="trust-icon" aria-hidden="true">↗</span><span>Explore verified parts & stores</span></div>
+                <div class="trust-item"><span class="trust-icon" aria-hidden="true">✓</span><span>Practical troubleshooting steps</span></div>
             </div>
         </div>
         <section class="section" id="products">
             <div class="wrap">
                 <div class="head">
                     <div>
-                        <div class="eyebrow">The gear desk</div>
-                        <h2>What are you looking for?</h2>
-                        <p>Search this starter catalogue to learn what a device does, what to check before buying, and
-                            where to look for it.</p>
+                        <div class="eyebrow">The Repair Catalog</div>
+                        <h2>What device are you fixing today?</h2>
+                        <p>Search our comprehensive repository to learn what a device contains, review repair difficulty, and follow step-by-step troubleshooting wikis.</p>
                     </div>
                 </div>
                 <form class="searchbox" id="searchForm" role="search">
@@ -1173,101 +1216,109 @@
                             stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <circle cx="10.8" cy="10.8" r="6.8" />
                             <path d="m16 16 5 5" />
-                        </svg><input id="searchInput" type="search" placeholder="Try gaming laptop, headphones or PS5"
+                        </svg><input id="searchInput" type="search" placeholder="Search devices e.g. PlayStation, iPhone, Laptop"
                             aria-label="Search tech products"></div><button class="btn primary" type="submit">Search
                         catalogue</button>
                 </form>
-                <div class="filters" role="group" aria-label="Filter products"><button class="chip" data-filter="all"
-                        aria-pressed="true" type="button">All gear</button><button class="chip" data-filter="gaming"
-                        aria-pressed="false" type="button">Gaming</button><button class="chip" data-filter="mobile"
-                        aria-pressed="false" type="button">Mobile</button><button class="chip" data-filter="audio"
-                        aria-pressed="false" type="button">Audio</button><button class="chip" data-filter="components"
-                        aria-pressed="false" type="button">PC components</button></div>
-                <div class="products" id="productsGrid" aria-live="polite">
-                    <article class="product" data-category="gaming"
-                        data-search="playstation 5 ps5 console gaming games">
-                        <div class="product-art"><span class="art-label">Console / Gaming</span>
-                            <div class="symbol shape-console" aria-hidden="true"></div>
+
+                <!-- iFixit-Inspired Structured Sidebar Layout Layout -->
+                <div class="ifixit-layout">
+                    <aside class="sidebar-filters">
+                        <h3>Device Categories</h3>
+                        <div class="filters" role="group" aria-label="Filter products">
+                            <button class="chip" data-filter="all" aria-pressed="true" type="button">All Devices</button>
+                            <button class="chip" data-filter="gaming" aria-pressed="false" type="button">Gaming Consoles</button>
+                            <button class="chip" data-filter="mobile" aria-pressed="false" type="button">Smartphones</button>
+                            <button class="chip" data-filter="audio" aria-pressed="false" type="button">Audio & Headsets</button>
+                            <button class="chip" data-filter="components" aria-pressed="false" type="button">PC Hardware</button>
                         </div>
-                        <div class="product-info">
-                            <div class="category">Gaming</div>
-                            <h3>PlayStation 5</h3>
-                            <p>A home console for modern games, streaming apps and multiplayer sessions.</p>
-                            <div class="card-bottom"><span class="price-note">Check current pricing</span><button
-                                    class="smallbtn detail" data-product="ps5" type="button">View details ↗</button>
+                    </aside>
+
+                    <div class="products" id="productsGrid" aria-live="polite">
+                        <article class="product" data-category="gaming"
+                            data-search="playstation 5 ps5 console gaming games">
+                            <div class="product-art"><span class="art-label">Console / Teardown</span>
+                                <div class="symbol shape-console" aria-hidden="true"></div>
                             </div>
-                        </div>
-                    </article>
-                    <article class="product" data-category="mobile" data-search="iphone smartphone mobile phone apple">
-                        <div class="product-art"><span class="art-label">Mobile / Everyday</span>
-                            <div class="symbol shape-phone" aria-hidden="true"></div>
-                        </div>
-                        <div class="product-info">
-                            <div class="category">Mobile</div>
-                            <h3>iPhone</h3>
-                            <p>A smartphone for communication, photos, apps, navigation and everyday tasks.</p>
-                            <div class="card-bottom"><span class="price-note">Models vary by year</span><button
-                                    class="smallbtn detail" data-product="iphone" type="button">View details ↗</button>
+                            <div class="product-info">
+                                <div class="category">Gaming</div>
+                                <h3>PlayStation 5</h3>
+                                <p>Comprehensive repair guide, thermal paste replacement, and storage expansion steps.</p>
+                                <div class="card-bottom"><span class="price-note">Repairability: Moderate</span><button
+                                        class="smallbtn detail" data-product="ps5" type="button">View guides ↗</button>
+                                </div>
                             </div>
-                        </div>
-                    </article>
-                    <article class="product" data-category="gaming" data-search="gaming laptop pc notebook computer">
-                        <div class="product-art"><span class="art-label">PC / Portable</span>
-                            <div class="symbol shape-laptop" aria-hidden="true">NX</div>
-                        </div>
-                        <div class="product-info">
-                            <div class="category">Gaming PCs</div>
-                            <h3>Gaming laptop</h3>
-                            <p>Portable PC performance for games, creative tools and demanding workloads.</p>
-                            <div class="card-bottom"><span class="price-note">Specs matter most</span><button
-                                    class="smallbtn detail" data-product="laptop" type="button">View details ↗</button>
+                        </article>
+                        <article class="product" data-category="mobile" data-search="iphone smartphone mobile phone apple">
+                            <div class="product-art"><span class="art-label">Mobile / Screen Fix</span>
+                                <div class="symbol shape-phone" aria-hidden="true"></div>
                             </div>
-                        </div>
-                    </article>
-                    <article class="product" data-category="audio"
-                        data-search="wireless headphones headset audio bluetooth">
-                        <div class="product-art"><span class="art-label">Audio / Wireless</span>
-                            <div class="symbol shape-headphones" aria-hidden="true"></div>
-                        </div>
-                        <div class="product-info">
-                            <div class="category">Audio</div>
-                            <h3>Wireless headphones</h3>
-                            <p>Listen without a cable, with comfort, battery life and connection quality to compare.</p>
-                            <div class="card-bottom"><span class="price-note">Fit is personal</span><button
-                                    class="smallbtn detail" data-product="headphones" type="button">View details
-                                    ↗</button></div>
-                        </div>
-                    </article>
-                    <article class="product" data-category="components"
-                        data-search="graphics card gpu pc component gaming graphics">
-                        <div class="product-art"><span class="art-label">PC / Component</span>
-                            <div class="symbol shape-gpu" aria-hidden="true"></div>
-                        </div>
-                        <div class="product-info">
-                            <div class="category">PC components</div>
-                            <h3>Graphics card (GPU)</h3>
-                            <p>Handles rendering for games and visual workloads. Compatibility is essential.</p>
-                            <div class="card-bottom"><span class="price-note">Check your PC first</span><button
-                                    class="smallbtn detail" data-product="gpu" type="button">View details ↗</button>
+                            <div class="product-info">
+                                <div class="category">Mobile</div>
+                                <h3>iPhone</h3>
+                                <p>Step-by-step screen replacement, battery health swaps, and port cleaning procedures.</p>
+                                <div class="card-bottom"><span class="price-note">Repairability: Variable</span><button
+                                        class="smallbtn detail" data-product="iphone" type="button">View guides ↗</button>
+                                </div>
                             </div>
-                        </div>
-                    </article>
-                    <article class="product" data-category="gaming" data-search="gaming controller gamepad accessory">
-                        <div class="product-art"><span class="art-label">Gaming / Accessory</span>
-                            <div class="symbol" aria-hidden="true">⌘</div>
-                        </div>
-                        <div class="product-info">
-                            <div class="category">Accessories</div>
-                            <h3>Gaming controller</h3>
-                            <p>A handheld input device for consoles, PCs and supported mobile games.</p>
-                            <div class="card-bottom"><span class="price-note">Check device support</span><button
-                                    class="smallbtn detail" data-product="controller" type="button">View details
-                                    ↗</button></div>
-                        </div>
-                    </article>
+                        </article>
+                        <article class="product" data-category="gaming" data-search="gaming laptop pc notebook computer">
+                            <div class="product-art"><span class="art-label">PC / Portable Upgrade</span>
+                                <div class="symbol shape-laptop" aria-hidden="true">NX</div>
+                            </div>
+                            <div class="product-info">
+                                <div class="category">Gaming PCs</div>
+                                <h3>Gaming laptop</h3>
+                                <p>Fan cleaning instructions, thermal upgrade paths, and RAM/SSD modular installation manuals.</p>
+                                <div class="card-bottom"><span class="price-note">Repairability: Moderate</span><button
+                                        class="smallbtn detail" data-product="laptop" type="button">View guides ↗</button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product" data-category="audio"
+                            data-search="wireless headphones headset audio bluetooth">
+                            <div class="product-art"><span class="art-label">Audio / Battery Swap</span>
+                                <div class="symbol shape-headphones" aria-hidden="true"></div>
+                            </div>
+                            <div class="product-info">
+                                <div class="category">Audio</div>
+                                <h3>Wireless headphones</h3>
+                                <p>Ear-pad cushion replacements, battery soldering tutorials, and connection troubleshooting.</p>
+                                <div class="card-bottom"><span class="price-note">Repairability: Difficult</span><button
+                                        class="smallbtn detail" data-product="headphones" type="button">View guides
+                                        ↗</button></div>
+                            </div>
+                        </article>
+                        <article class="product" data-category="components"
+                            data-search="graphics card gpu pc component gaming graphics">
+                            <div class="product-art"><span class="art-label">PC / Component Repair</span>
+                                <div class="symbol shape-gpu" aria-hidden="true"></div>
+                            </div>
+                            <div class="product-info">
+                                <div class="category">PC components</div>
+                                <h3>Graphics card (GPU)</h3>
+                                <p>Thermal pad replacement guides, fan header diagnostics, and power connector checks.</p>
+                                <div class="card-bottom"><span class="price-note">Repairability: Advanced</span><button
+                                        class="smallbtn detail" data-product="gpu" type="button">View guides ↗</button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product" data-category="gaming" data-search="gaming controller gamepad accessory">
+                            <div class="product-art"><span class="art-label">Accessory / Stick Fix</span>
+                                <div class="symbol" aria-hidden="true">⌘</div>
+                            </div>
+                            <div class="product-info">
+                                <div class="category">Accessories</div>
+                                <h3>Gaming controller</h3>
+                                <p>Joystick drift calibration, shell housing swaps, and trigger spring replacement instructions.</p>
+                                <div class="card-bottom"><span class="price-note">Repairability: Easy</span><button
+                                        class="smallbtn detail" data-product="controller" type="button">View guides
+                                        ↗</button></div>
+                            </div>
+                        </article>
+                        <div class="empty" id="empty"><strong>No matching guides found.</strong>Try a broader search or choose “All Devices” to reset filters.</div>
+                    </div>
                 </div>
-                <div class="empty" id="empty"><strong>No matching gear found.</strong>Try a broader search or choose
-                    “All gear” to reset the filters.</div>
             </div>
         </section>
         <section class="section support" id="troubleshoot">
@@ -1275,8 +1326,7 @@
                 <div class="intro">
                     <div class="eyebrow">Support bay</div>
                     <h2>Something not working?<br>Start with the basics.</h2>
-                    <p>Choose the device and symptom for a practical first-pass checklist. These guides cover common
-                        issues and do not replace the manufacturer's support instructions.</p>
+                    <p>Choose the device and symptom for a practical first-pass checklist modeled after open support wikis. These guides cover common issues.</p>
                     <div class="warning"><span aria-hidden="true">!</span>
                         <div><strong>Safety first</strong>Unplug equipment before checking external cables. Never open a
                             power supply or swollen battery. If you smell burning or see liquid damage, stop using the
@@ -1367,12 +1417,12 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script>
         const details = {
-            ps5: { name: "PlayStation 5", category: "Gaming console", description: "A console designed to play current-generation games on a TV or monitor. It can also run supported streaming and entertainment apps.", checks: ["Confirm whether you need the standard or digital edition and check included storage/accessories.", "Check the display's HDMI input and supported resolution/refresh rate.", "Compare game library, subscription costs and storage expansion options before buying."], shops: [["PlayStation official site", "https://www.playstation.com/en-gb/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]] },
-            iphone: { name: "iPhone", category: "Smartphone", description: "A smartphone for calls, messages, photography, navigation and apps. Features and compatibility differ by model and release year.", checks: ["Compare storage, battery condition for used devices, camera features and supported iOS versions.", "Check network/SIM compatibility and whether the phone is unlocked.", "For a used phone, verify activation lock is removed and ask for proof of purchase."], shops: [["Apple UK", "https://www.apple.com/uk/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]] },
-            laptop: { name: "Gaming laptop", category: "Portable PC", description: "A portable computer that combines a screen, keyboard and internal components. Gaming performance depends on GPU, cooling and power limits.", checks: ["Compare the exact GPU and CPU model, not just the product family name.", "Check memory, SSD capacity, screen refresh rate, weight and ports.", "Look for independent thermal/noise testing and verify the return policy."], shops: [["Search manufacturer stores", "https://www.google.com/search?q=official+gaming+laptop+manufacturer+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]] },
-            headphones: { name: "Wireless headphones", category: "Audio", description: "Headphones connect over Bluetooth or a dedicated wireless receiver. Comfort, microphone quality, latency and battery life vary by model.", checks: ["Check compatibility with your phone, console or computer.", "For gaming, look for platform support and microphone performance.", "Review comfort, replacement ear pads, battery life and return terms."], shops: [["Search manufacturer stores", "https://www.google.com/search?q=official+wireless+headphone+manufacturer+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Argos", "https://www.argos.co.uk/"]] },
-            gpu: { name: "Graphics card (GPU)", category: "PC component", description: "A graphics card processes visual workloads. A new card must fit the case, work with the power supply and be supported by the rest of the system.", checks: ["Measure case clearance and check the card's slot width and power connectors.", "Check the recommended power supply and available PCIe power cables.", "Compare benchmarks for the games/apps and resolution you actually use."], shops: [["Scan", "https://www.scan.co.uk/"], ["Overclockers UK", "https://www.overclockers.co.uk/"], ["Amazon UK", "https://www.amazon.co.uk/"]] },
-            controller: { name: "Gaming controller", category: "Gaming accessory", description: "A controller sends button, stick and trigger inputs to a console, PC or compatible mobile device.", checks: ["Confirm support for your exact console, operating system or game.", "Compare wired, Bluetooth and proprietary wireless connection options.", "Check battery type, charging method, stick layout and warranty."], shops: [["Search official platform store", "https://www.google.com/search?q=official+gaming+controller+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Argos", "https://www.argos.co.uk/"]] }
+            ps5: { name: "PlayStation 5", category: "Gaming console — Repair & Teardown Manual", description: "A comprehensive repository of troubleshooting, teardowns, and repair guides designed to help you maintain your console.", checks: ["Examine Torx security screw requirements and modular faceplate removal steps.", "Check the HDMI port pins for bending or physical deformation before replacing.", "Review fan cleaning procedures to address loud fan or overheating warnings."], shops: [["PlayStation official site", "https://www.playstation.com/en-gb/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]] },
+            iphone: { name: "iPhone", category: "Smartphone — Repair Manual", description: "Guides for screen assemblies, battery swaps, adhesive replacement strips, and diagnostic checks.", checks: ["Verify exact model numbers to match replacement display connectors and screws.", "Ensure proper use of heating pads to soften factory waterproof display adhesives.", "Check battery health percentage and ensure safety discharge protocols are followed."], shops: [["Apple UK", "https://www.apple.com/uk/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]] },
+            laptop: { name: "Gaming laptop", category: "Portable PC — Maintenance Guide", description: "Portable computer service guides covering thermal paste renewal, memory expansion, and internal cleaning.", checks: ["Disconnect the internal battery cable immediately upon opening the case chassis.", "Compare exact cooling block layout, screw lengths, and thermal pad thickness.", "Verify RAM and M.2 NVMe slot compatibility before purchasing upgrade hardware."], shops: [["Search manufacturer stores", "https://www.google.com/search?q=official+gaming+laptop+manufacturer+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]] },
+            headphones: { name: "Wireless headphones", category: "Audio — Disassembly & Fixes", description: "Guides detailing acoustic foam ear-pad replacements, headband hinges, and battery soldering steps.", checks: ["Inspect charging micro-USB/Type-C port solder joints for hairline fractures.", "Review snap-fit housing disassembly techniques to avoid plastic clip breakage.", "Confirm replacement battery voltage and physical battery dimensions match."], shops: [["Search manufacturer stores", "https://www.google.com/search?q=official+wireless+headphone+manufacturer+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Argos", "https://www.argos.co.uk/"]] },
+            gpu: { name: "Graphics card (GPU)", category: "PC component — Teardown Manual", description: "Advanced hardware guides for cleaning radiator fins, repasting cooling compound, and fan replacement.", checks: ["Measure case clearance and check slot width and power connector requirements.", "Carefully unplug fragile micro-fan and RGB LED headers before removing the shroud.", "Compare thermal performance benchmarks before and after paste application."], shops: [["Scan", "https://www.scan.co.uk/"], ["Overclockers UK", "https://www.overclockers.co.uk/"], ["Amazon UK", "https://www.amazon.co.uk/"]] },
+            controller: { name: "Gaming controller", category: "Accessory — Fix Guide", description: "Step-by-step tutorials for addressing stick drift, replacing bumper switches, and battery housing.", checks: ["Confirm screwdriver bit sizes (typically Phillips PH00) required for housing screws.", "Inspect potentiometer modules for dust and wear before swapping thumbsticks.", "Check battery type, ribbon cable latch states, and reassembly alignment."], shops: [["Search official platform store", "https://www.google.com/search?q=official+gaming+controller+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Argos", "https://www.argos.co.uk/"]] }
         };
         const fixes = {
             power: { title: "Start with power and connections", steps: ["Check the wall socket with another safe device and confirm the power cable is firmly connected.", "Disconnect non-essential accessories, wait 30 seconds, then reconnect and try once.", "Check the manufacturer's guide for the exact model's power/reset procedure."], caution: "If there is a burning smell, unusual heat, liquid damage or a damaged cable, stop testing." },
@@ -1387,7 +1437,7 @@
         function filterProducts() { const q = search.value.trim().toLowerCase(); let count = 0; cards.forEach(card => { const show = (!q || (card.dataset.search + ' ' + card.innerText).toLowerCase().includes(q)) && (active === 'all' || card.dataset.category === active); card.hidden = !show; if (show) count++ }); empty.style.display = count ? 'none' : 'block' }
         document.getElementById('searchForm').addEventListener('submit', e => { e.preventDefault(); filterProducts(); document.getElementById('productsGrid').scrollIntoView({ behavior: 'smooth', block: 'start' }) }); search.addEventListener('input', filterProducts); chips.forEach(chip => chip.addEventListener('click', () => { active = chip.dataset.filter; chips.forEach(c => c.setAttribute('aria-pressed', String(c === chip))); filterProducts() }));
         const toast = document.getElementById('toast'); let toastTimer; function notify(message) { toast.textContent = message; toast.style.display = 'block'; clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.style.display = 'none', 4500) }
-        document.querySelectorAll('.detail').forEach(button => button.addEventListener('click', () => { const p = details[button.dataset.product]; if (!p) return; const w = window.open('', '_blank'); if (!w) { notify('Your browser blocked the detail window. Allow pop-ups for this site, then try again.'); return } const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); w.document.open(); w.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111315"><title>${esc(p.name)} | NEXTECH</title><style>:root{color-scheme:dark;--bg:#111315;--surface:#191c1f;--line:#3a4147;--text:#f4f5f6;--muted:#b5bdc3;--accent:#a7f36b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,sans-serif}.wrap{width:min(760px,calc(100% - 32px));margin:auto;padding:42px 0}.brand{color:var(--accent);font-weight:900;letter-spacing:.1em;font-size:.85rem}.back{display:inline-block;margin:25px 0;color:var(--accent)}h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.05;letter-spacing:-.05em;margin:0 0 8px}p{color:var(--muted)}h2{font-size:1.15rem;margin:24px 0 8px}.box{border:1px solid var(--line);background:var(--surface);border-radius:13px;padding:21px;margin-top:20px}li{margin:8px 0;color:#dce0e2}.links{display:flex;gap:9px;flex-wrap:wrap}.links a{border:1px solid #525d64;border-radius:8px;padding:9px 11px;text-decoration:none}.links a:hover{border-color:var(--accent)}.note{border-top:1px solid var(--line);padding-top:16px;margin-top:24px;font-size:.85rem}</style></head><body><main class="wrap"><div class="brand">NEXTECH / DEVICE NOTES</div><a class="back" href="${location.href}#products">← Back to the gear desk</a><h1>${esc(p.name)}</h1><p>${esc(p.category)}</p><div class="box"><p>${esc(p.description)}</p><h2>Before you buy</h2><ul>${p.checks.map(s => `<li>${esc(s)}</li>`).join('')}</ul><h2>Places to start</h2><div class="links">${p.shops.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${esc(n)} ↗</a>`).join('')}</div></div><p class="note">NEXTECH demo content. Prices and stock are not checked live. Confirm specifications, availability, delivery, warranty and return terms with each seller.</p></main></body></html>`); w.document.close() }));
+        document.querySelectorAll('.detail').forEach(button => button.addEventListener('click', () => { const p = details[button.dataset.product]; if (!p) return; const w = window.open('', '_blank'); if (!w) { notify('Your browser blocked the detail window. Allow pop-ups for this site, then try again.'); return } const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); w.document.open(); w.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111315"><title>${esc(p.name)} | NEXTECH</title><style>:root{color-scheme:dark;--bg:#111315;--surface:#191c1f;--line:#3a4147;--text:#f4f5f6;--muted:#b5bdc3;--accent:#a7f36b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,sans-serif}.wrap{width:min(760px,calc(100% - 32px));margin:auto;padding:42px 0}.brand{color:var(--accent);font-weight:900;letter-spacing:.1em;font-size:.85rem}.back{display:inline-block;margin:25px 0;color:var(--accent)}h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.05;letter-spacing:-.05em;margin:0 0 8px}p{color:var(--muted)}h2{font-size:1.15rem;margin:24px 0 8px}.box{border:1px solid var(--line);background:var(--surface);border-radius:13px;padding:21px;margin-top:20px}li{margin:8px 0;color:#dce0e2}.links{display:flex;gap:9px;flex-wrap:wrap}.links a{border:1px solid #525d64;border-radius:8px;padding:9px 11px;text-decoration:none}.links a:hover{border-color:var(--accent)}.note{border-top:1px solid var(--line);padding-top:16px;margin-top:24px;font-size:.85rem}</style></head><body><main class="wrap"><div class="brand">NEXTECH / REPAIR MANUAL</div><a class="back" href="${location.href}#products">← Back to the catalog</a><h1>${esc(p.name)}</h1><p>${esc(p.category)}</p><div class="box"><p>${esc(p.description)}</p><h2>Repair considerations</h2><ul>${p.checks.map(s => `<li>${esc(s)}</li>`).join('')}</ul><h2>Where to source parts & tools</h2><div class="links">${p.shops.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${esc(n)} ↗</a>`).join('')}</div></div><p class="note">NEXTECH demo content. Confirm replacement part specs, warranty policies, and tool requirements before beginning any repair work.</p></main></body></html>`); w.document.close() }));
         const deviceNotes = { console: 'For consoles, check the official status page and model-specific support guide before trying recovery options.', phone: 'For phones, check the manufacturer support guide. Back up important data before updates or resets.', laptop: 'For computers, save your work and avoid BIOS/firmware changes unless the manufacturer recommends them.', audio: 'For audio gear, check the selected output, pairing mode and compatibility with your source device.', gpu: 'For graphics cards, do not open the card or power supply. Check driver guidance from the GPU and PC manufacturers.', controller: 'For controllers, check pairing mode, battery level, firmware guidance and platform compatibility.', other: 'Use the exact model number to find the manufacturer’s official support steps.' };
         function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) }
         document.getElementById('troubleForm').addEventListener('submit', e => { e.preventDefault(); const d = document.getElementById('device').value, s = document.getElementById('symptom').value, notes = document.getElementById('notes').value.trim(), f = fixes[s]; if (!d || !f) return; const result = document.getElementById('solution'); result.innerHTML = `<h4>${f.title}</h4><p><strong>Device:</strong> ${esc(document.getElementById('device').selectedOptions[0].text)}</p><ol>${f.steps.map(step => `<li>${esc(step)}</li>`).join('')}</ol><p><strong>Device-specific note:</strong> ${esc(deviceNotes[d])}</p><p class="caution"><strong>Stop if:</strong> ${esc(f.caution)}</p>${notes ? `<p><strong>Your notes:</strong> ${esc(notes)}</p>` : ''}<p>If these checks do not help, record the exact model and any error code, then contact the manufacturer's support team or a qualified repair professional.</p>`; result.style.display = 'block'; result.scrollIntoView({ behavior: 'smooth', block: 'nearest' }) });
