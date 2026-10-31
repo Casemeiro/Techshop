@@ -9,6 +9,8 @@
     <title>NEXTECH — Your tech, understood.</title>
     <!-- External CSS Link -->
     <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome Icon Library CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -18,12 +20,12 @@
             <a class="brand" href="#home" aria-label="NEXTECH home">
                 <span class="mark">N</span><span>NEX<span class="brand-tail">TECH</span></span>
             </a>
-            <button class="menu" id="menuToggle" aria-expanded="false" aria-controls="nav">Menu</button>
+            <button class="menu" id="menuToggle" aria-expanded="false" aria-controls="nav"><i class="fa-solid fa-bars" aria-hidden="true"></i> Menu</button>
             <nav id="nav" aria-label="Main navigation">
                 <a href="#products">Explore gear & guides</a>
                 <a href="#troubleshoot">Troubleshoot</a>
                 <a href="#adminSection">Add Resource (Backend)</a>
-                <a class="navcta" href="#products">Find your repair guide ↗</a>
+                <a class="navcta" href="#products">Find your repair guide <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
             </nav>
         </div>
     </header>
@@ -36,8 +38,8 @@
                     <h1>Fix your tech.<br><em>Understood.</em></h1>
                     <p class="hero-copy">Access structured repair manuals, explore device teardowns, and view linked video guides dynamically managed from our backend database repository.</p>
                     <div class="actions">
-                        <a class="btn primary" href="#products">Explore device guides ↗</a>
-                        <a class="btn secondary" href="#adminSection">Attach YouTube Link ＋</a>
+                        <a class="btn primary" href="#products">Explore device guides <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                        <a class="btn secondary" href="#adminSection">Attach YouTube Link <i class="fa-solid fa-plus" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <aside class="hero-art" aria-label="Stylised gaming console illustration">
@@ -53,9 +55,9 @@
 
         <div class="trust">
             <div class="wrap trust-grid">
-                <div class="trust-item"><span class="trust-icon" aria-hidden="true">⌕</span><span>Find guides by name or device type</span></div>
-                <div class="trust-item"><span class="trust-icon" aria-hidden="true">↗</span><span>Explore verified parts & stores</span></div>
-                <div class="trust-item"><span class="trust-icon" aria-hidden="true">✓</span><span>Dynamic YouTube link backend storage</span></div>
+                <div class="trust-item"><span class="trust-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span><span>Find guides by name or device type</span></div>
+                <div class="trust-item"><span class="trust-icon" aria-hidden="true"><i class="fa-solid fa-arrow-trend-up"></i></span><span>Explore verified parts & stores</span></div>
+                <div class="trust-item"><span class="trust-icon" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span><span>Dynamic YouTube link backend storage</span></div>
             </div>
         </div>
 
@@ -70,10 +72,7 @@
                 </div>
                 <form class="searchbox" id="searchForm" role="search">
                     <div class="searchfield">
-                        <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <circle cx="10.8" cy="10.8" r="6.8" />
-                            <path d="m16 16 5 5" />
-                        </svg>
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                         <input id="searchInput" type="search" placeholder="Search devices e.g. PlayStation, iPhone, Laptop" aria-label="Search tech products">
                     </div>
                     <button class="btn primary" type="submit">Search catalogue</button>
@@ -83,11 +82,11 @@
                     <aside class="sidebar-filters">
                         <h3>Device Categories</h3>
                         <div class="filters" role="group" aria-label="Filter products">
-                            <button class="chip" data-filter="all" aria-pressed="true" type="button">All Devices</button>
-                            <button class="chip" data-filter="gaming" aria-pressed="false" type="button">Gaming Consoles</button>
-                            <button class="chip" data-filter="mobile" aria-pressed="false" type="button">Smartphones</button>
-                            <button class="chip" data-filter="audio" aria-pressed="false" type="button">Audio & Headsets</button>
-                            <button class="chip" data-filter="components" aria-pressed="false" type="button">PC Hardware</button>
+                            <button class="chip" data-filter="all" aria-pressed="true" type="button"><i class="fa-solid fa-border-all" aria-hidden="true"></i> All Devices</button>
+                            <button class="chip" data-filter="gaming" aria-pressed="false" type="button"><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Gaming Consoles</button>
+                            <button class="chip" data-filter="mobile" aria-pressed="false" type="button"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Smartphones</button>
+                            <button class="chip" data-filter="audio" aria-pressed="false" type="button"><i class="fa-solid fa-headphones" aria-hidden="true"></i> Audio & Headsets</button>
+                            <button class="chip" data-filter="components" aria-pressed="false" type="button"><i class="fa-solid fa-microchip" aria-hidden="true"></i> PC Hardware</button>
                         </div>
                     </aside>
 
@@ -116,7 +115,7 @@
                                         <label for="backendVideoUrl">YouTube Link (URL)</label>
                                         <input type="text" id="backendVideoUrl" placeholder="https://youtube.com/watch?v=..." required />
                                     </div>
-                                    <button class="btn primary" type="submit">Save to DB ＋</button>
+                                    <button class="btn primary" type="submit">Save to DB <i class="fa-solid fa-plus" aria-hidden="true"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -130,7 +129,7 @@
                                     <div class="category">Gaming</div>
                                     <h3>PlayStation 5</h3>
                                     <p>Comprehensive repair guide, thermal paste replacement, and storage expansion steps.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Moderate</span><button class="smallbtn detail" data-product="ps5" type="button">View guides & YouTube ↗</button></div>
+                                    <div class="card-bottom"><span class="price-note">Repairability: Moderate</span><button class="smallbtn detail" data-product="ps5" type="button">View guides & YouTube <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></div>
                                 </div>
                             </article>
                             <article class="product" data-category="mobile" data-search="iphone smartphone mobile phone apple">
@@ -141,7 +140,7 @@
                                     <div class="category">Mobile</div>
                                     <h3>iPhone</h3>
                                     <p>Step-by-step screen replacement, battery health swaps, and port cleaning procedures.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Variable</span><button class="smallbtn detail" data-product="iphone" type="button">View guides & YouTube ↗</button></div>
+                                    <div class="card-bottom"><span class="price-note">Repairability: Variable</span><button class="smallbtn detail" data-product="iphone" type="button">View guides & YouTube <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></div>
                                 </div>
                             </article>
                             <article class="product" data-category="gaming" data-search="gaming laptop pc notebook computer">
@@ -152,7 +151,7 @@
                                     <div class="category">Gaming PCs</div>
                                     <h3>Gaming laptop</h3>
                                     <p>Fan cleaning instructions, thermal upgrade paths, and RAM/SSD modular installation manuals.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Moderate</span><button class="smallbtn detail" data-product="laptop" type="button">View guides & YouTube ↗</button></div>
+                                    <div class="card-bottom"><span class="price-note">Repairability: Moderate</span><button class="smallbtn detail" data-product="laptop" type="button">View guides & YouTube <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></div>
                                 </div>
                             </article>
                             <article class="product" data-category="audio" data-search="wireless headphones headset audio bluetooth">
@@ -163,7 +162,7 @@
                                     <div class="category">Audio</div>
                                     <h3>Wireless headphones</h3>
                                     <p>Ear-pad cushion replacements, battery soldering tutorials, and connection troubleshooting.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Difficult</span><button class="smallbtn detail" data-product="headphones" type="button">View guides & YouTube ↗</button></div>
+                                    <div class="card-bottom"><span class="price-note">Repairability: Difficult</span><button class="smallbtn detail" data-product="headphones" type="button">View guides & YouTube <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></div>
                                 </div>
                             </article>
                             <article class="product" data-category="components" data-search="graphics card gpu pc component gaming graphics">
@@ -174,18 +173,18 @@
                                     <div class="category">PC components</div>
                                     <h3>Graphics card (GPU)</h3>
                                     <p>Thermal pad replacement guides, fan header diagnostics, and power connector checks.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Advanced</span><button class="smallbtn detail" data-product="gpu" type="button">View guides & YouTube ↗</button></div>
+                                    <div class="card-bottom"><span class="price-note">Repairability: Advanced</span><button class="smallbtn detail" data-product="gpu" type="button">View guides & YouTube <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></div>
                                 </div>
                             </article>
                             <article class="product" data-category="gaming" data-search="gaming controller gamepad accessory">
                                 <div class="product-art"><span class="art-label">Accessory / Stick Fix</span>
-                                    <div class="symbol" aria-hidden="true">⌘</div>
+                                    <div class="symbol" aria-hidden="true"><i class="fa-solid fa-gamepad"></i></div>
                                 </div>
                                 <div class="product-info">
                                     <div class="category">Accessories</div>
                                     <h3>Gaming controller</h3>
                                     <p>Joystick drift calibration, shell housing swaps, and trigger spring replacement instructions.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Easy</span><button class="smallbtn detail" data-product="controller" type="button">View guides & YouTube ↗</button></div>
+                                    <div class="card-bottom"><span class="price-note">Repairability: Easy</span><button class="smallbtn detail" data-product="controller" type="button">View guides & YouTube <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></div>
                                 </div>
                             </article>
                             <div class="empty" id="empty"><strong>No matching guides found.</strong>Try a broader search or choose “All Devices” to reset filters.</div>
@@ -201,7 +200,7 @@
                     <div class="eyebrow">Support bay</div>
                     <h2>Something not working?<br>Start with the basics.</h2>
                     <p>Choose the device and symptom for a practical first-pass checklist modeled after open support wikis. These guides cover common issues.</p>
-                    <div class="warning"><span aria-hidden="true">!</span>
+                    <div class="warning"><span aria-hidden="true"><i class="fa-solid fa-triangle-exclamation"></i></span>
                         <div><strong>Safety first</strong>Unplug equipment before checking external cables. Never open a power supply or swollen battery. If you smell burning or see liquid damage, stop using the device.</div>
                     </div>
                 </div>
@@ -236,7 +235,7 @@
                             </div>
                         </div>
                         <div class="field"><label for="notes">Extra details (optional)</label><textarea id="notes" placeholder="What have you tried? Any error message?"></textarea></div>
-                        <button class="btn primary" type="submit">Show suggested checks ↗</button>
+                        <button class="btn primary" type="submit">Show suggested checks <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
                     </form>
                     <div class="solution" id="solution" role="status" aria-live="polite"></div>
                 </div>
@@ -275,7 +274,7 @@
                     <h2>Make your next tech decision a good one.</h2>
                     <p>Start with the device, the job it needs to do, and the details that matter.</p>
                 </div>
-                <a class="btn primary" href="#products">Browse the gear desk ↗</a>
+                <a class="btn primary" href="#products">Browse the gear desk <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
             </div>
         </section>
     </main>
@@ -289,7 +288,7 @@
             <div class="footlinks">
                 <a href="#products">Products</a>
                 <a href="#troubleshoot">Troubleshooting</a>
-                <a href="#home">Back to top ↑</a>
+                <a href="#home">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
             </div>
         </div>
     </footer>

@@ -1,4 +1,7 @@
-/* Theme colors and shared design values */
+/* ============================================================
+   Theme variables and base resets
+   Add global color, spacing, and typography improvements here.
+   ============================================================ */
 :root {
     color-scheme: dark;
     --bg: #111315;
@@ -71,7 +74,10 @@ button {
     top: 12px
 }
 
-/* Header and navigation */
+/* ============================================================
+   Header and top navigation
+   Update logo, nav layout, sticky header, and buttons here.
+   ============================================================ */
 .topbar {
     border-bottom: 1px solid var(--line);
     background: #151719;
@@ -144,7 +150,10 @@ nav .navcta {
     border-radius: 9px
 }
 
-/* Product filter sidebar */
+/* ============================================================
+   Filters sidebar and page shell
+   Improve the storefront shell, sidebar, and filter panel here.
+   ============================================================ */
 .ifixit-layout {
     display: grid;
     grid-template-columns: 260px 1fr;
@@ -200,7 +209,10 @@ nav .navcta {
     font-weight: 850;
 }
 
-/* Hero text and buttons */
+/* ============================================================
+   Hero section and promotional banner
+   Tweak the headline, CTA buttons, and visual hero artwork here.
+   ============================================================ */
 .hero {
     padding: 50px 0 40px;
     border-bottom: 1px solid var(--line)
@@ -418,7 +430,10 @@ h1 em {
     letter-spacing: .08em
 }
 
-/* Trust highlights */
+/* ============================================================
+   Trust / proof strip
+   Edit the feature trust badges and short proof statements here.
+   ============================================================ */
 .trust {
     background: #151719;
     border-bottom: 1px solid var(--line)
@@ -450,7 +465,11 @@ h1 em {
     font-weight: 900
 }
 
-/* Shared sections and catalog headings */
+/* ============================================================
+   Catalog and product grid
+   This is the main product section where you can refine cards, search,
+   pricing layouts, and empty-state behavior.
+   ============================================================ */
 .section {
     padding: 50px 0
 }
@@ -777,7 +796,10 @@ h1 em {
     margin-bottom: 5px
 }
 
-/* Product management form */
+/* ============================================================
+   Admin tools panel
+   Add styling for inventory/admin controls and dashboard-like widgets here.
+   ============================================================ */
 .admin-panel {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -805,7 +827,10 @@ h1 em {
     align-items: end;
 }
 
-/* Repair support and troubleshooting form */
+/* ============================================================
+   Support and troubleshooting section
+   Update the form, warnings, and solution output styling here.
+   ============================================================ */
 .support {
     background: #171a1c;
     border-block: 1px solid var(--line)
@@ -955,7 +980,10 @@ h1 em {
     margin-bottom: 0
 }
 
-/* Call to action */
+/* ============================================================
+   Final call-to-action and footer
+   Adjust the closing CTA, links, and footer presentation here.
+   ============================================================ */
 .cta {
     display: flex;
     align-items: center;
@@ -1030,7 +1058,10 @@ footer {
     box-shadow: 0 8px 24px #0005
 }
 
-/* Tablet layout */
+/* ============================================================
+   Responsive layout adjustments
+   Add tablet and mobile tweaks for spacing, grids, and nav behavior here.
+   ============================================================ */
 @media(max-width:850px) {
     .hero-grid {
         grid-template-columns: 1fr;
