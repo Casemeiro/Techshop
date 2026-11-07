@@ -19,13 +19,3 @@ The browser loads `index.html` over HTTP (for example, with the VS Code Live Ser
 
 The troubleshooting form displays suggested checks based on the selected device and symptom. YouTube search results can also be requested through the YouTube Data API when an API key is configured.
 
-Firebase Setup
---------------
-1. In the Firebase console for `techshop-13eeb`, enable Cloud Firestore and the Email/Password sign-in provider in Authentication.
-2. Deploy `firestore.rules` to the project. The rules allow public catalog reads and each signed-in user can only read or change their own saved guide list.
-3. Add the local and deployed site hostnames to Firebase Authentication's authorized domains.
-4. Serve the site over HTTP and open it. Do not use `file://`; browsers block ES module imports from local files.
-
-Run the Website
----------------
-An internet connection is needed for Firebase, Analytics, and external resources such as YouTube links and the optional YouTube API.
