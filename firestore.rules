@@ -1,0 +1,19 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /devices/{deviceId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /users/{userId}/savedDevices/{deviceId} {
+      allow read, delete: if request.auth != null && request.auth.uid == userId;
+      allow create, update: if request.auth != null
+        && request.auth.uid == userId
+        && deviceId in ['ps5', 'iphone', 'android', 'laptop', 'headphones', 'gpu', 'controller']
+        && request.resource.data.keys().hasOnly(['deviceKey'])
+        && request.resource.data.deviceKey == deviceId;
+    }
+  }
+}

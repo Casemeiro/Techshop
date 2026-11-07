@@ -26,7 +26,7 @@
             <nav id="nav" aria-label="Main navigation">
                 <a href="#products">Explore gear & guides</a>
                 <a href="#troubleshoot">Troubleshoot</a>
-                <a href="#adminSection">Add Resource (Backend)</a>
+                <a href="#accountSection">My saved guides</a>
                 <a class="navcta" href="#products">Find your repair guide <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#f4f5f6" style="width:16px;height:16px;vertical-align:middle;"></lord-icon></a>
             </nav>
         </div>
@@ -38,10 +38,10 @@
                 <div>
                     <div class="eyebrow">Your community repair & tech hub</div>
                     <h1>Fix your tech.<br><em>Understood.</em></h1>
-                    <p class="hero-copy">Access structured repair manuals, explore device teardowns, and view linked video guides dynamically managed from our backend database repository.</p>
+                    <p class="hero-copy">Access repair manuals, explore device teardowns, and save useful guides to your personal account.</p>
                     <div class="actions">
                         <a class="btn primary" href="#products">Explore device guides <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#14200e" style="width:16px;height:16px;vertical-align:middle;"></lord-icon></a>
-                        <a class="btn secondary" href="#adminSection">Attach YouTube Link <lord-icon src="https://cdn.lordicon.com/mecwbjnp.json" trigger="hover" colors="primary:#f4f5f6" style="width:16px;height:16px;vertical-align:middle;"></lord-icon></a>
+                        <a class="btn secondary" href="#accountSection">Sign in to save guides <lord-icon src="https://cdn.lordicon.com/mecwbjnp.json" trigger="hover" colors="primary:#f4f5f6" style="width:16px;height:16px;vertical-align:middle;"></lord-icon></a>
                     </div>
                 </div>
                 <aside class="hero-art" aria-label="Stylised gaming console illustration">
@@ -59,7 +59,7 @@
             <div class="wrap trust-grid">
                 <div class="trust-item"><span class="trust-icon" aria-hidden="true"><lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="hover" colors="primary:#a7f36b" style="width:20px;height:20px;"></lord-icon></span><span>Find guides by name or device type</span></div>
                 <div class="trust-item"><span class="trust-icon" aria-hidden="true"><lord-icon src="https://cdn.lordicon.com/qhgmphtg.json" trigger="hover" colors="primary:#a7f36b" style="width:20px;height:20px;"></lord-icon></span><span>Explore verified parts & stores</span></div>
-                <div class="trust-item"><span class="trust-icon" aria-hidden="true"><lord-icon src="https://cdn.lordicon.com/lomfljuq.json" trigger="hover" colors="primary:#a7f36b" style="width:20px;height:20px;"></lord-icon></span><span>Dynamic YouTube link backend storage</span></div>
+                <div class="trust-item"><span class="trust-icon" aria-hidden="true"><lord-icon src="https://cdn.lordicon.com/lomfljuq.json" trigger="hover" colors="primary:#a7f36b" style="width:20px;height:20px;"></lord-icon></span><span>Save guides to your account</span></div>
             </div>
         </div>
 
@@ -93,34 +93,32 @@
                     </aside>
 
                     <div>
-                        <div class="admin-panel" id="adminSection">
-                            <h3>Backend Resource Manager</h3>
-                            <p>Attach or update YouTube teardown video URLs dynamically to any device in real-time storage.</p>
-                            <form id="backendForm">
-                                <div class="admin-grid">
+                        <div class="account-panel" id="accountSection">
+                            <h3>Your saved guides</h3>
+                            <p>Create an account or sign in to keep your saved repair guides private and available on your devices.</p>
+                            <p id="accountStatus" role="status" aria-live="polite">Connecting to your account…</p>
+                            <form id="accountForm">
+                                <div class="account-grid">
                                     <div class="field" style="margin-bottom:0">
-                                        <label for="backendDeviceKey">Select Device</label>
-                                        <select id="backendDeviceKey" required>
-                                            <option value="ps5">PlayStation 5</option>
-                                            <option value="iphone">iPhone</option>
-                                            <option value="android">Android phone</option>
-                                            <option value="laptop">Gaming laptop</option>
-                                            <option value="headphones">Wireless headphones</option>
-                                            <option value="gpu">Graphics card (GPU)</option>
-                                            <option value="controller">Gaming controller</option>
-                                        </select>
+                                        <label for="accountEmail">Email</label>
+                                        <input id="accountEmail" type="email" autocomplete="email" required>
                                     </div>
                                     <div class="field" style="margin-bottom:0">
-                                        <label for="backendVideoTitle">Video Label / Title</label>
-                                        <input type="text" id="backendVideoTitle" placeholder="e.g. Full Teardown Guide" required />
+                                        <label for="accountPassword">Password (at least 6 characters)</label>
+                                        <input id="accountPassword" type="password" minlength="6" autocomplete="current-password" required>
                                     </div>
-                                    <div class="field" style="margin-bottom:0">
-                                        <label for="backendVideoUrl">YouTube Link (URL)</label>
-                                        <input type="text" id="backendVideoUrl" placeholder="https://youtube.com/watch?v=..." required />
+                                    <div class="account-actions">
+                                        <button class="btn primary" id="signInButton" type="submit" data-action="sign-in">Sign in</button>
+                                        <button class="btn secondary" id="createAccountButton" type="submit" data-action="sign-up">Create account</button>
                                     </div>
-                                    <button class="btn primary" type="submit">Save to DB <lord-icon src="https://cdn.lordicon.com/mecwbjnp.json" trigger="hover" colors="primary:#14200e" style="width:16px;height:16px;vertical-align:middle;"></lord-icon></button>
                                 </div>
                             </form>
+                            <button class="btn secondary" id="signOutButton" type="button" hidden>Sign out</button>
+                            <section id="savedGuidesSection" aria-labelledby="savedGuidesHeading" hidden>
+                                <h4 id="savedGuidesHeading">Saved repair guides</h4>
+                                <p id="savedGuidesEmpty">You have not saved any guides yet. Use “Save guide” on a device below.</p>
+                                <ul id="savedGuides"></ul>
+                            </section>
                         </div>
 
                         <div class="products" id="productsGrid" aria-live="polite">
@@ -311,8 +309,8 @@
 
     <!-- External Configuration (Loaded first) -->
     <script src="config.js"></script>
-    <!-- External Main JS -->
-    <script src="script.js"></script>
+    <!-- Firebase and application code use browser ES modules. -->
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>

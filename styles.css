@@ -399,8 +399,8 @@ h1 em {
     font-weight: 600;
 }
 
-/* Admin Panel (Backend Simulation Form) */
-.admin-panel {
+/* Account panel */
+.account-panel {
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 12px;
@@ -408,22 +408,49 @@ h1 em {
     margin-bottom: 32px;
 }
 
-.admin-panel h3 {
+.account-panel h3 {
     margin: 0 0 6px;
     font-size: 1.15rem;
 }
 
-.admin-panel p {
+.account-panel p {
     color: var(--muted);
     font-size: 0.9rem;
     margin: 0 0 20px;
 }
 
-.admin-grid {
+.account-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) auto;
     gap: 16px;
     align-items: flex-end;
+}
+
+.account-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#savedGuides {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#savedGuides li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid var(--line);
+    padding-top: 10px;
+}
+
+#savedGuides li span {
+    flex: 1 1 140px;
 }
 
 .field {
@@ -893,7 +920,7 @@ footer {
     nav.open {
         display: flex;
     }
-    .admin-grid {
+    .account-grid {
         grid-template-columns: 1fr;
     }
     .formrow {

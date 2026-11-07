@@ -1,5 +1,30 @@
+import {
+    auth,
+    collection,
+    createUserWithEmailAndPassword,
+    db,
+    deleteDoc,
+    doc,
+    getDocs,
+    onAuthStateChanged,
+    setDoc,
+    signInWithEmailAndPassword,
+    signOut
+} from './firebase.js';
+
 // Check if CONFIG object exists safely
 const getApiKey = () => (typeof CONFIG !== 'undefined' && CONFIG.YOUTUBE_API_KEY) ? CONFIG.YOUTUBE_API_KEY : '';
+
+function getYouTubeUrl(value) {
+    try {
+        const url = new URL(value);
+        const allowedHosts = ['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtu.be'];
+        return url.protocol === 'https:' && !url.username && !url.password && !url.port
+            && allowedHosts.includes(url.hostname.toLowerCase()) ? url.href : null;
+    } catch {
+        return null;
+    }
+}
 
 // Helper function to query YouTube Data API v3 dynamically
 async function fetchYouTubeVideos(deviceName) {
@@ -26,7 +51,6 @@ async function fetchYouTubeVideos(deviceName) {
     }
 }
 
-// Backend DB simulation storage (persisted in memory / localStorage simulation)
 const defaultDetails = {
     ps5: { name: "PlayStation 5", category: "Gaming console — Repair & Teardown Manual", description: "A comprehensive repository of troubleshooting, teardowns, and repair guides designed to help you maintain your console.", checks: ["Examine Torx security screw requirements and modular faceplate removal steps.", "Check the HDMI port pins for bending or physical deformation before replacing.", "Review fan cleaning procedures to address loud fan or overheating warnings."], shops: [["PlayStation official site", "https://www.playstation.com/en-gb/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]], youtubeLinks: [["PS5 Complete Cleaning & Overheating Fix", "https://www.youtube.com/watch?v=4ZusQZnFObI"], ["PlayStation 5 Ultimate Troubleshooting & Repair Guide", "https://www.youtube.com/watch?v=KBA9Pf1kaak"]] },
     iphone: { name: "iPhone", category: "Smartphone — Screen Repair Manual", description: "Screen replacement tutorials for iPhone models.", checks: ["Verify the exact iPhone model and replacement display before ordering parts.", "Back up important data and follow model-specific battery and display safety guidance.", "Test the display and touch response before sealing the device."], shops: [["Apple UK", "https://www.apple.com/uk/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]], youtubeLinks: [["iPhone 15 Pro Genuine Screen Replacement", "https://www.youtube.com/watch?v=3HVwqz_0Prg"], ["iPhone 14 Plus Screen Replacement", "https://www.youtube.com/watch?v=X0U3QBuZT9Y"], ["iPhone 11 Screen Replacement Tutorial", "https://www.youtube.com/watch?v=fLZcA3LKPSo"], ["3 Steps To Fix Any iPhone | iPhone Screen Replacement", "https://www.youtube.com/watch?v=YVuRlWswx58"]] },
@@ -55,23 +79,9 @@ defaultDetails.android = {
     youtubeLinks: [["How To Replace a Cracked Smartphone Screen!", "https://www.youtube.com/watch?v=6kNNGNAQtZA"], ["How to Repair a Broken Android Phone Screen (DIY Tutorial)", "https://www.youtube.com/watch?v=Shh26Rcn9Ps"], ["Fix ANY Android Screen! Fast & Simple DIY Tutorial", "https://www.youtube.com/watch?v=w9gLrYHZ0fM"], ["How to Fix Android Broken Screen (Full Guide)", "https://www.youtube.com/watch?v=iFwo9jdMCe8"], ["How to Fix Screen Problem Android - Step by Step", "https://www.youtube.com/watch?v=FqHwgL8l6WQ"]]
 };
 
-// Replace retired seeded links while retaining unrelated saved device data and custom links.
-const savedDetails = JSON.parse(localStorage.getItem('nextech_db') || 'null') || {};
-const seededVideoUrls = new Set(Object.values(defaultDetails).flatMap(device => device.youtubeLinks.map(([, url]) => url)));
-const retiredVideoUrls = new Set([
-    'https://www.youtube.com/watch?v=CaAY-iVUNjQ',
-    'https://www.youtube.com/watch?v=d_H4Iu3_0x0',
-    'https://www.youtube.com/watch?v=8Vq7r6_0x0x',
-    'https://www.youtube.com/watch?v=9Vq7r6_0x0y',
-    'https://www.youtube.com/watch?v=7Vq7r6_0x0z',
-    'https://www.youtube.com/watch?v=6Vq7r6_0x0a'
-]);
-const details = { ...defaultDetails, ...savedDetails };
-Object.entries(defaultDetails).forEach(([key, defaults]) => {
-    const saved = savedDetails[key] || {};
-    const customLinks = (saved.youtubeLinks || []).filter(([, url]) => !seededVideoUrls.has(url) && !retiredVideoUrls.has(url));
-    details[key] = { ...defaults, ...saved, youtubeLinks: [...defaults.youtubeLinks, ...customLinks] };
-});
+const details = Object.fromEntries(
+    Object.entries(defaultDetails).map(([key, device]) => [key, { ...device, youtubeLinks: [...device.youtubeLinks] }])
+);
 
 const fixes = {
     power: { title: "Start with power and connections", steps: ["Check the wall socket with another safe device and confirm the power cable is firmly connected.", "Disconnect non-essential accessories, wait 30 seconds, then reconnect and try once.", "Check the manufacturer's guide for the exact model's power/reset procedure."], caution: "If there is a burning smell, unusual heat, liquid damage or a damaged cable, stop testing." },
@@ -124,24 +134,204 @@ function notify(message) {
     toastTimer = setTimeout(() => toast.style.display = 'none', 4500);
 }
 
-// Handle Backend Form Submission (Adding a YouTube link to a device)
-document.getElementById('backendForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const deviceKey = document.getElementById('backendDeviceKey').value;
-    const title = document.getElementById('backendVideoTitle').value.trim();
-    const url = document.getElementById('backendVideoUrl').value.trim();
+async function loadCloudLinks() {
+    try {
+        const snapshot = await getDocs(collection(db, 'devices'));
+        snapshot.forEach(deviceDocument => {
+            const key = deviceDocument.id;
+            if (!Object.hasOwn(details, key)) return;
+            const links = deviceDocument.data().youtubeLinks;
+            if (!Array.isArray(links)) return;
 
-    if (details[deviceKey]) {
-        if (!details[deviceKey].youtubeLinks) {
-            details[deviceKey].youtubeLinks = [];
+            const safeLinks = links
+                .filter(link => link && typeof link.title === 'string' && typeof link.url === 'string')
+                .map(link => [link.title, getYouTubeUrl(link.url)])
+                .filter(([, url]) => url);
+            const existing = new Set(details[key].youtubeLinks.map(([title, url]) => `${title}\0${url}`));
+            details[key].youtubeLinks.push(...safeLinks.filter(([title, url]) => !existing.has(`${title}\0${url}`)));
+        });
+    } catch (error) {
+        console.error('Failed to load Firebase video links.', error);
+        notify('Could not load saved video links from Firebase. Please try again later.');
+    }
+}
+
+const accountStatus = document.getElementById('accountStatus');
+const accountForm = document.getElementById('accountForm');
+const signOutButton = document.getElementById('signOutButton');
+const savedGuidesSection = document.getElementById('savedGuidesSection');
+const savedGuidesList = document.getElementById('savedGuides');
+const savedGuidesEmpty = document.getElementById('savedGuidesEmpty');
+const savedGuideKeys = new Set();
+let currentUser = null;
+
+function renderSavedGuides() {
+    savedGuidesList.replaceChildren();
+    savedGuidesEmpty.hidden = savedGuideKeys.size > 0;
+
+    savedGuideKeys.forEach(key => {
+        const device = details[key];
+        if (!device) return;
+
+        const item = document.createElement('li');
+        const name = document.createElement('span');
+        name.textContent = device.name;
+
+        const openButton = document.createElement('button');
+        openButton.className = 'smallbtn';
+        openButton.type = 'button';
+        openButton.dataset.openGuide = key;
+        openButton.textContent = 'Open guide';
+
+        const removeButton = document.createElement('button');
+        removeButton.className = 'smallbtn';
+        removeButton.type = 'button';
+        removeButton.dataset.removeGuide = key;
+        removeButton.textContent = 'Remove';
+
+        item.append(name, openButton, removeButton);
+        savedGuidesList.append(item);
+    });
+
+    document.querySelectorAll('.save-guide').forEach(button => {
+        const isSaved = savedGuideKeys.has(button.dataset.product);
+        button.textContent = isSaved ? 'Saved' : 'Save guide';
+        button.setAttribute('aria-pressed', String(isSaved));
+    });
+}
+
+async function loadSavedGuides(user) {
+    savedGuideKeys.clear();
+    renderSavedGuides();
+    try {
+        const snapshot = await getDocs(collection(db, 'users', user.uid, 'savedDevices'));
+        if (currentUser?.uid !== user.uid) return;
+        snapshot.forEach(savedDevice => {
+            if (Object.hasOwn(details, savedDevice.id)) savedGuideKeys.add(savedDevice.id);
+        });
+        renderSavedGuides();
+    } catch (error) {
+        console.error('Could not load this account’s saved guides.', error);
+        if (currentUser?.uid === user.uid) {
+            accountStatus.textContent = 'Signed in, but saved guides could not be loaded. Please try again.';
+            notify('Could not load your saved guides. Check your connection and Firebase setup.');
         }
-        details[deviceKey].youtubeLinks.push([title, url]);
-        localStorage.setItem('nextech_db', JSON.stringify(details));
-        notify(`Successfully saved YouTube video link to ${details[deviceKey].name}!`);
-        document.getElementById('backendVideoTitle').value = '';
-        document.getElementById('backendVideoUrl').value = '';
+    }
+}
+
+accountForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    const action = event.submitter?.dataset.action;
+    const email = document.getElementById('accountEmail').value.trim();
+    const password = document.getElementById('accountPassword').value;
+    const buttons = accountForm.querySelectorAll('button[type="submit"]');
+    buttons.forEach(button => { button.disabled = true; });
+
+    try {
+        if (action === 'sign-up') {
+            await createUserWithEmailAndPassword(auth, email, password);
+        } else {
+            await signInWithEmailAndPassword(auth, email, password);
+        }
+        accountForm.reset();
+    } catch (error) {
+        console.error(`Firebase ${action === 'sign-up' ? 'account creation' : 'sign-in'} failed.`, error);
+        notify(action === 'sign-up'
+            ? 'Could not create your account. Check the email, use a password of at least 6 characters, and try again.'
+            : 'Could not sign in. Check your email and password, then try again.');
+    } finally {
+        buttons.forEach(button => { button.disabled = false; });
     }
 });
+
+signOutButton.addEventListener('click', async () => {
+    try {
+        await signOut(auth);
+    } catch (error) {
+        console.error('Sign-out failed.', error);
+        notify('Could not sign out. Please try again.');
+    }
+});
+
+onAuthStateChanged(auth, user => {
+    currentUser = user;
+    accountForm.hidden = Boolean(user);
+    signOutButton.hidden = !user;
+    savedGuidesSection.hidden = !user;
+    savedGuideKeys.clear();
+    renderSavedGuides();
+
+    if (!user) {
+        accountStatus.textContent = 'Sign in or create an account to save guides to your personal list.';
+        return;
+    }
+
+    accountStatus.textContent = `Signed in as ${user.email || 'your account'}.`;
+    loadSavedGuides(user);
+}, error => {
+    console.error('Firebase Authentication state could not be read.', error);
+    accountStatus.textContent = 'Could not check your account. Please reload the page.';
+});
+
+cards.forEach(card => {
+    const productKey = card.querySelector('.detail')?.dataset.product;
+    const cardBottom = card.querySelector('.card-bottom');
+    if (!productKey || !cardBottom) return;
+
+    const saveButton = document.createElement('button');
+    saveButton.className = 'smallbtn save-guide';
+    saveButton.dataset.product = productKey;
+    saveButton.type = 'button';
+    saveButton.textContent = 'Save guide';
+    saveButton.setAttribute('aria-pressed', 'false');
+    cardBottom.append(saveButton);
+});
+
+document.getElementById('productsGrid').addEventListener('click', async event => {
+    const button = event.target.closest('.save-guide');
+    if (!button) return;
+
+    const key = button.dataset.product;
+    const user = currentUser;
+    if (!user) {
+        notify('Sign in or create an account to save this guide.');
+        document.getElementById('accountSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+    }
+
+    button.disabled = true;
+    try {
+        const savedDeviceRef = doc(db, 'users', user.uid, 'savedDevices', key);
+        if (savedGuideKeys.has(key)) {
+            await deleteDoc(savedDeviceRef);
+            if (currentUser?.uid === user.uid) savedGuideKeys.delete(key);
+        } else {
+            await setDoc(savedDeviceRef, { deviceKey: key });
+            if (currentUser?.uid === user.uid) savedGuideKeys.add(key);
+        }
+        renderSavedGuides();
+    } catch (error) {
+        console.error('Could not update this account’s saved guides.', error);
+        notify('Could not update your saved guides. Check your connection and Firebase setup.');
+    } finally {
+        button.disabled = false;
+    }
+});
+
+savedGuidesList.addEventListener('click', event => {
+    const openButton = event.target.closest('[data-open-guide]');
+    if (openButton) {
+        document.querySelector(`.detail[data-product="${openButton.dataset.openGuide}"]`)?.click();
+        return;
+    }
+
+    const removeButton = event.target.closest('[data-remove-guide]');
+    if (removeButton) {
+        document.querySelector(`.save-guide[data-product="${removeButton.dataset.removeGuide}"]`)?.click();
+    }
+});
+
+loadCloudLinks();
 
 document.querySelectorAll('.detail').forEach(button => button.addEventListener('click', async () => {
     const pKey = button.dataset.product;
@@ -161,11 +351,11 @@ document.querySelectorAll('.detail').forEach(button => button.addEventListener('
     const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
     const ytList = p.youtubeLinks && p.youtubeLinks.length > 0
-        ? p.youtubeLinks.map(([t, u]) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${esc(t)} ▶</a>`).join('')
-        : '<p style="color:var(--dim);font-size:0.9rem;">No YouTube links attached yet. Use the backend form on the home page to add one!</p>';
+        ? p.youtubeLinks.map(([t, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(t)} ▶</a>`).join('')
+        : '<p style="color:var(--dim);font-size:0.9rem;">No YouTube links are available for this device yet.</p>';
 
     w.document.open();
-    w.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111315"><title>${esc(p.name)} | NEXTECH</title><style>:root{color-scheme:dark;--bg:#111315;--surface:#191c1f;--line:#3a4147;--text:#f4f5f6;--muted:#b5bdc3;--accent:#a7f36b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,sans-serif}.wrap{width:min(760px,calc(100% - 32px));margin:auto;padding:42px 0}.brand{color:var(--accent);font-weight:900;letter-spacing:.1em;font-size:.85rem}.back{display:inline-block;margin:25px 0;color:var(--accent)}h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.05;letter-spacing:-.05em;margin:0 0 8px}p{color:var(--muted)}h2{font-size:1.15rem;margin:24px 0 8px}.box{border:1px solid var(--line);background:var(--surface);border-radius:13px;padding:21px;margin-top:20px}li{margin:8px 0;color:#dce0e2}.links{display:flex;gap:9px;flex-wrap:wrap}.links a{border:1px solid #525d64;border-radius:8px;padding:9px 11px;text-decoration:none}.links a:hover{border-color:var(--accent)}.note{border-top:1px solid var(--line);padding-top:16px;margin-top:24px;font-size:.85rem}</style></head><body><main class="wrap"><div class="brand">NEXTECH / REPAIR MANUAL & BACKEND DB</div><a class="back" href="${location.href}#products">← Back to the catalog</a><h1>${esc(p.name)}</h1><p>${esc(p.category)}</p><div class="box"><p>${esc(p.description)}</p><h2>Repair considerations</h2><ul>${p.checks.map(s => `<li>${esc(s)}</li>`).join('')}</ul><h2>Attached YouTube Video Guides (Backend DB)</h2><div class="links">${ytList}</div><h2>Where to source parts & tools</h2><div class="links">${p.shops.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${esc(n)} ↗</a>`).join('')}</div></div><p class="note">NEXTECH demo content with simulated backend database storage. Confirm replacement part specs, warranty policies, and tool requirements before beginning any repair work.</p></main></body></html>`);
+    w.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111315"><title>${esc(p.name)} | NEXTECH</title><style>:root{color-scheme:dark;--bg:#111315;--surface:#191c1f;--line:#3a4147;--text:#f4f5f6;--muted:#b5bdc3;--accent:#a7f36b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,sans-serif}.wrap{width:min(760px,calc(100% - 32px));margin:auto;padding:42px 0}.brand{color:var(--accent);font-weight:900;letter-spacing:.1em;font-size:.85rem}.back{display:inline-block;margin:25px 0;color:var(--accent)}h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.05;letter-spacing:-.05em;margin:0 0 8px}p{color:var(--muted)}h2{font-size:1.15rem;margin:24px 0 8px}.box{border:1px solid var(--line);background:var(--surface);border-radius:13px;padding:21px;margin-top:20px}li{margin:8px 0;color:#dce0e2}.links{display:flex;gap:9px;flex-wrap:wrap}.links a{border:1px solid #525d64;border-radius:8px;padding:9px 11px;text-decoration:none}.links a:hover{border-color:var(--accent)}.note{border-top:1px solid var(--line);padding-top:16px;margin-top:24px;font-size:.85rem}</style></head><body><main class="wrap"><div class="brand">NEXTECH / REPAIR MANUAL & FIREBASE</div><a class="back" href="${location.href}#products">← Back to the catalog</a><h1>${esc(p.name)}</h1><p>${esc(p.category)}</p><div class="box"><p>${esc(p.description)}</p><h2>Repair considerations</h2><ul>${p.checks.map(s => `<li>${esc(s)}</li>`).join('')}</ul><h2>Attached YouTube Video Guides (Firebase)</h2><div class="links">${ytList}</div><h2>Where to source parts & tools</h2><div class="links">${p.shops.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${esc(n)} ↗</a>`).join('')}</div></div><p class="note">NEXTECH guide content. Confirm replacement part specs, warranty policies, and tool requirements before beginning any repair work.</p></main></body></html>`);
     w.document.close();
 }));
 
