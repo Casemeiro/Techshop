@@ -28,16 +28,50 @@ async function fetchYouTubeVideos(deviceName) {
 
 // Backend DB simulation storage (persisted in memory / localStorage simulation)
 const defaultDetails = {
-    ps5: { name: "PlayStation 5", category: "Gaming console — Repair & Teardown Manual", description: "A comprehensive repository of troubleshooting, teardowns, and repair guides designed to help you maintain your console.", checks: ["Examine Torx security screw requirements and modular faceplate removal steps.", "Check the HDMI port pins for bending or physical deformation before replacing.", "Review fan cleaning procedures to address loud fan or overheating warnings."], shops: [["PlayStation official site", "https://www.playstation.com/en-gb/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]], youtubeLinks: [["PS5 Official Teardown Guide", "https://www.youtube.com/watch?v=CaAY-iVUNjQ"]] },
-    iphone: { name: "iPhone", category: "Smartphone — Repair Manual", description: "Guides for screen assemblies, battery swaps, adhesive replacement strips, and diagnostic checks.", checks: ["Verify exact model numbers to match replacement display connectors and screws.", "Ensure proper use of heating pads to soften factory waterproof display adhesives.", "Check battery health percentage and ensure safety discharge protocols are followed."], shops: [["Apple UK", "https://www.apple.com/uk/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]], youtubeLinks: [["iPhone Complete Screen Repair", "https://www.youtube.com/watch?v=d_H4Iu3_0x0"]] },
-    laptop: { name: "Gaming laptop", category: "Portable PC — Maintenance Guide", description: "Portable computer service guides covering thermal paste renewal, memory expansion, and internal cleaning.", checks: ["Disconnect the internal battery cable immediately upon opening the case chassis.", "Compare exact cooling block layout, screw lengths, and thermal pad thickness.", "Verify RAM and M.2 NVMe slot compatibility before purchasing upgrade hardware."], shops: [["Search manufacturer stores", "https://www.google.com/search?q=official+gaming+laptop+manufacturer+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]], youtubeLinks: [["How to Clean Laptop Fans & Repaste", "https://www.youtube.com/watch?v=8Vq7r6_0x0x"]] },
+    ps5: { name: "PlayStation 5", category: "Gaming console — Repair & Teardown Manual", description: "A comprehensive repository of troubleshooting, teardowns, and repair guides designed to help you maintain your console.", checks: ["Examine Torx security screw requirements and modular faceplate removal steps.", "Check the HDMI port pins for bending or physical deformation before replacing.", "Review fan cleaning procedures to address loud fan or overheating warnings."], shops: [["PlayStation official site", "https://www.playstation.com/en-gb/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]], youtubeLinks: [["PS5 Complete Cleaning & Overheating Fix", "https://www.youtube.com/watch?v=4ZusQZnFObI"], ["PlayStation 5 Ultimate Troubleshooting & Repair Guide", "https://www.youtube.com/watch?v=KBA9Pf1kaak"]] },
+    iphone: { name: "iPhone", category: "Smartphone — Screen Repair Manual", description: "Screen replacement tutorials for iPhone models.", checks: ["Verify the exact iPhone model and replacement display before ordering parts.", "Back up important data and follow model-specific battery and display safety guidance.", "Test the display and touch response before sealing the device."], shops: [["Apple UK", "https://www.apple.com/uk/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]], youtubeLinks: [["iPhone 15 Pro Genuine Screen Replacement", "https://www.youtube.com/watch?v=3HVwqz_0Prg"], ["iPhone 14 Plus Screen Replacement", "https://www.youtube.com/watch?v=X0U3QBuZT9Y"], ["iPhone 11 Screen Replacement Tutorial", "https://www.youtube.com/watch?v=fLZcA3LKPSo"], ["3 Steps To Fix Any iPhone | iPhone Screen Replacement", "https://www.youtube.com/watch?v=YVuRlWswx58"]] },
+    laptop: { name: "Gaming laptop", category: "Portable PC — Maintenance Guide", description: "Portable computer service guides covering thermal maintenance, fan cleaning, and internal upgrades.", checks: ["Disconnect power and follow the manufacturer service guide for the exact model.", "Compare cooling block layouts, screw lengths, and thermal pad thickness.", "Verify RAM and M.2 NVMe compatibility before purchasing upgrade hardware."], shops: [["Search manufacturer stores", "https://www.google.com/search?q=official+gaming+laptop+manufacturer+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]], youtubeLinks: [["Gaming Laptop Teardown, Cleaning, and Thermal Maintenance", "https://www.youtube.com/watch?v=-r_s8aOqgUs"], ["Step-by-Step Laptop Disassembly and Assembly Guide", "https://www.youtube.com/watch?v=naKp6gWQYwI"]] },
     headphones: { name: "Wireless headphones", category: "Audio — Disassembly & Fixes", description: "Guides detailing acoustic foam ear-pad replacements, headband hinges, and battery soldering steps.", checks: ["Inspect charging micro-USB/Type-C port solder joints for hairline fractures.", "Review snap-fit housing disassembly techniques to avoid plastic clip breakage.", "Confirm replacement battery voltage and physical battery dimensions match."], shops: [["Search manufacturer stores", "https://www.google.com/search?q=official+wireless+headphone+manufacturer+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Argos", "https://www.argos.co.uk/"]], youtubeLinks: [["Headphone Cushion & Battery Replacement", "https://www.youtube.com/watch?v=9Vq7r6_0x0y"]] },
     gpu: { name: "Graphics card (GPU)", category: "PC component — Teardown Manual", description: "Advanced hardware guides for cleaning radiator fins, repasting cooling compound, and fan replacement.", checks: ["Measure case clearance and check slot width and power connector requirements.", "Carefully unplug fragile micro-fan and RGB LED headers before removing the shroud.", "Compare thermal performance benchmarks before and after paste application."], shops: [["Scan", "https://www.scan.co.uk/"], ["Overclockers UK", "https://www.overclockers.co.uk/"], ["Amazon UK", "https://www.amazon.co.uk/"]], youtubeLinks: [["GPU Teardown and Thermal Paste Swap", "https://www.youtube.com/watch?v=7Vq7r6_0x0z"]] },
     controller: { name: "Gaming controller", category: "Accessory — Fix Guide", description: "Step-by-step tutorials for addressing stick drift, replacing bumper switches, and battery housing.", checks: ["Confirm screwdriver bit sizes (typically Phillips PH00) required for housing screws.", "Inspect potentiometer modules for dust and wear before swapping thumbsticks.", "Check battery type, ribbon cable latch states, and reassembly alignment."], shops: [["Search official platform store", "https://www.google.com/search?q=official+gaming+controller+store"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Argos", "https://www.argos.co.uk/"]], youtubeLinks: [["Fix Stick Drift Permanently", "https://www.youtube.com/watch?v=6Vq7r6_0x0a"]] }
 };
 
-// Load details from localStorage if available
-let details = JSON.parse(localStorage.getItem('nextech_db')) || defaultDetails;
+// Replace retired seeded links while retaining unrelated saved device data and custom links.
+Object.assign(defaultDetails.headphones, {
+    youtubeLinks: [["How to Repair ANY Broken Headphones at Home", "https://www.youtube.com/watch?v=sGdqtyjhTNE"]]
+});
+Object.assign(defaultDetails.gpu, {
+    youtubeLinks: [["GPU Repair Course - Diagnostic & Fix Guide Part 1", "https://www.youtube.com/watch?v=Jj_vziChgIU"], ["Advanced GPU Troubleshooting & Repair", "https://www.youtube.com/watch?v=eF19Qp9LMzw"]]
+});
+Object.assign(defaultDetails.controller, {
+    youtubeLinks: [["How to Fix Xbox & Console Controller Joysticks", "https://www.youtube.com/watch?v=hZKP0SQhVyA"]]
+});
+defaultDetails.android = {
+    name: "Android phone",
+    category: "Smartphone — Screen Repair Manual",
+    description: "Screen repair tutorials for Android phones from Samsung, Xiaomi, Oppo, Vivo, and other manufacturers.",
+    checks: ["Identify the exact phone model and screen assembly before beginning a repair.", "Back up data and check official model-specific safety and disassembly guidance.", "Use suitable tools and avoid puncturing or bending the battery during screen removal."],
+    shops: [["Samsung Support", "https://www.samsung.com/uk/support/"], ["Amazon UK", "https://www.amazon.co.uk/"], ["Currys", "https://www.currys.co.uk/"]],
+    youtubeLinks: [["How To Replace a Cracked Smartphone Screen!", "https://www.youtube.com/watch?v=6kNNGNAQtZA"], ["How to Repair a Broken Android Phone Screen (DIY Tutorial)", "https://www.youtube.com/watch?v=Shh26Rcn9Ps"], ["Fix ANY Android Screen! Fast & Simple DIY Tutorial", "https://www.youtube.com/watch?v=w9gLrYHZ0fM"], ["How to Fix Android Broken Screen (Full Guide)", "https://www.youtube.com/watch?v=iFwo9jdMCe8"], ["How to Fix Screen Problem Android - Step by Step", "https://www.youtube.com/watch?v=FqHwgL8l6WQ"]]
+};
+
+// Replace retired seeded links while retaining unrelated saved device data and custom links.
+const savedDetails = JSON.parse(localStorage.getItem('nextech_db') || 'null') || {};
+const seededVideoUrls = new Set(Object.values(defaultDetails).flatMap(device => device.youtubeLinks.map(([, url]) => url)));
+const retiredVideoUrls = new Set([
+    'https://www.youtube.com/watch?v=CaAY-iVUNjQ',
+    'https://www.youtube.com/watch?v=d_H4Iu3_0x0',
+    'https://www.youtube.com/watch?v=8Vq7r6_0x0x',
+    'https://www.youtube.com/watch?v=9Vq7r6_0x0y',
+    'https://www.youtube.com/watch?v=7Vq7r6_0x0z',
+    'https://www.youtube.com/watch?v=6Vq7r6_0x0a'
+]);
+const details = { ...defaultDetails, ...savedDetails };
+Object.entries(defaultDetails).forEach(([key, defaults]) => {
+    const saved = savedDetails[key] || {};
+    const customLinks = (saved.youtubeLinks || []).filter(([, url]) => !seededVideoUrls.has(url) && !retiredVideoUrls.has(url));
+    details[key] = { ...defaults, ...saved, youtubeLinks: [...defaults.youtubeLinks, ...customLinks] };
+});
 
 const fixes = {
     power: { title: "Start with power and connections", steps: ["Check the wall socket with another safe device and confirm the power cable is firmly connected.", "Disconnect non-essential accessories, wait 30 seconds, then reconnect and try once.", "Check the manufacturer's guide for the exact model's power/reset procedure."], caution: "If there is a burning smell, unusual heat, liquid damage or a damaged cable, stop testing." },
