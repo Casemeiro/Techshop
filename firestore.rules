@@ -11,7 +11,7 @@ service cloud.firestore {
       allow read, delete: if request.auth != null && request.auth.uid == userId;
       allow create, update: if request.auth != null
         && request.auth.uid == userId
-        && deviceId in ['ps5', 'iphone', 'android', 'laptop', 'headphones', 'gpu', 'controller']
+        && deviceId in ['ps5', 'xbox', 'switch', 'iphone', 'android', 'tablet', 'laptop', 'headphones', 'earbuds', 'gpu', 'controller', 'keyboard']
         && request.resource.data.keys().hasOnly(['deviceKey'])
         && request.resource.data.deviceKey == deviceId;
     }

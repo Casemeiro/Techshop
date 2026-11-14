@@ -5,12 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#111315">
-    <meta name="description" content="Find the right tech, understand your gear, and troubleshoot with confidence.">
+    <meta name="description" content="Find repair guides, explore device teardowns, and troubleshoot your tech with confidence.">
     <title>NEXTECH — Your tech, understood.</title>
-    <!-- External CSS Link -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Lordicon Script Integration -->
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
 </head>
 
 <body>
@@ -20,36 +17,52 @@
             <a class="brand" href="#home" aria-label="NEXTECH home">
                 <span class="mark">N</span><span>NEX<span class="brand-tail">TECH</span></span>
             </a>
-            <button class="menu" id="menuToggle" aria-expanded="false" aria-controls="nav">
-                <lord-icon src="https://cdn.lordicon.com/jnzhohgm.json" trigger="hover" colors="primary:#f4f5f6" style="width:20px;height:20px;vertical-align:middle;"></lord-icon> Menu
+            <button class="menu" id="menuToggle" type="button" aria-expanded="false" aria-controls="nav">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                Menu
             </button>
             <nav id="nav" aria-label="Main navigation">
-                <a href="#products">Explore gear & guides</a>
+                <a href="#products">Repair catalog</a>
                 <a href="#troubleshoot">Troubleshoot</a>
-                <a href="#accountSection">My saved guides</a>
-                <a class="navcta" href="#products">Find your repair guide <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#f4f5f6" style="width:16px;height:16px;vertical-align:middle;"></lord-icon></a>
+                <a href="#accountSection" data-open-account>Saved guides</a>
+                <a class="navcta" href="#products">
+                    Find a repair guide
+                    <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
             </nav>
         </div>
     </header>
-    
+
     <main id="main">
         <section class="hero" id="home">
             <div class="wrap hero-grid">
                 <div>
-                    <div class="eyebrow">Your community repair & tech hub</div>
+                    <div class="eyebrow">Your community repair &amp; tech hub</div>
                     <h1>Fix your tech.<br><em>Understood.</em></h1>
                     <p class="hero-copy">Access repair manuals, explore device teardowns, and save useful guides to your personal account.</p>
                     <div class="actions">
-                        <a class="btn primary" href="#products">Explore device guides <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#14200e" style="width:16px;height:16px;vertical-align:middle;"></lord-icon></a>
-                        <a class="btn secondary" href="#accountSection">Sign in to save guides <lord-icon src="https://cdn.lordicon.com/mecwbjnp.json" trigger="hover" colors="primary:#f4f5f6" style="width:16px;height:16px;vertical-align:middle;"></lord-icon></a>
+                        <a class="btn primary" href="#products">
+                            Explore device guides
+                            <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </a>
+                        <a class="btn secondary" href="#accountSection" data-open-account>
+                            <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                            Sign in to save guides
+                        </a>
                     </div>
                 </div>
-                <aside class="hero-art" aria-label="Stylised gaming console illustration">
-                    <div class="art-top"><span>REPAIR / FIELD NOTES</span><span class="status">Ready to repair</span></div>
-                    <div class="console" role="img" aria-label="Abstract gaming console"></div>
+                <aside class="hero-art" aria-label="Stylised hardware teardown preview">
+                    <div class="art-top"><span>REPAIR / FIELD NOTES</span><span class="status">12 device guides</span></div>
+                    <div class="console" role="img" aria-label="Stylised console and circuit illustration">
+                        <div class="hero-blueprint">
+                            <div class="blueprint-chip"></div>
+                            <div class="blueprint-lines"><span></span><span></span><span></span></div>
+                            <div class="blueprint-unit"></div>
+                        </div>
+                    </div>
                     <div class="art-bottom">
                         <div><strong>Make your gear last longer.</strong><span>Teardowns and fixes for devices you own.</span></div>
-                        <span class="art-code">NX / 001</span>
+                        <span class="art-code">NX / 012</span>
                     </div>
                 </aside>
             </div>
@@ -57,9 +70,24 @@
 
         <div class="trust">
             <div class="wrap trust-grid">
-                <div class="trust-item"><span class="trust-icon" aria-hidden="true"><lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="hover" colors="primary:#a7f36b" style="width:20px;height:20px;"></lord-icon></span><span>Find guides by name or device type</span></div>
-                <div class="trust-item"><span class="trust-icon" aria-hidden="true"><lord-icon src="https://cdn.lordicon.com/qhgmphtg.json" trigger="hover" colors="primary:#a7f36b" style="width:20px;height:20px;"></lord-icon></span><span>Explore verified parts & stores</span></div>
-                <div class="trust-item"><span class="trust-icon" aria-hidden="true"><lord-icon src="https://cdn.lordicon.com/lomfljuq.json" trigger="hover" colors="primary:#a7f36b" style="width:20px;height:20px;"></lord-icon></span><span>Save guides to your account</span></div>
+                <div class="trust-item">
+                    <span class="trust-icon" aria-hidden="true">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                    </span>
+                    <span>Find guides by device name or category</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon" aria-hidden="true">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2z"/></svg>
+                    </span>
+                    <span>Review difficulty, checklists &amp; parts stores</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon" aria-hidden="true">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    </span>
+                    <span>Save repair guides to your personal account</span>
+                </div>
             </div>
         </div>
 
@@ -69,136 +97,332 @@
                     <div>
                         <div class="eyebrow">The Repair Catalog</div>
                         <h2>What device are you fixing today?</h2>
-                        <p>Search our comprehensive repository to learn what a device contains, review repair difficulty, and check attached YouTube video tutorials.</p>
+                        <p>Search our repository to review repairability, key teardown checks, parts stores, and attached YouTube video tutorials.</p>
                     </div>
                 </div>
                 <form class="searchbox" id="searchForm" role="search">
                     <div class="searchfield">
-                        <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="hover" colors="primary:#8d969e" style="width:21px;height:21px;"></lord-icon>
-                        <input id="searchInput" type="search" placeholder="Search devices e.g. PlayStation, iPhone, Laptop" aria-label="Search tech products">
+                        <svg class="icon search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                        <input id="searchInput" type="search" placeholder="Search devices e.g. PlayStation, Switch, iPhone, Earbuds" aria-label="Search repair guides">
                     </div>
-                    <button class="btn primary" type="submit">Search catalogue</button>
+                    <button class="btn primary" type="submit">Search catalog</button>
                 </form>
 
                 <div class="ifixit-layout">
                     <aside class="sidebar-filters">
                         <h3>Device Categories</h3>
-                        <div class="filters" role="group" aria-label="Filter products">
-                            <button class="chip" data-filter="all" aria-pressed="true" type="button"><lord-icon src="https://cdn.lordicon.com/gqdnbnwt.json" trigger="hover" colors="primary:currentColor" style="width:16px;height:16px;vertical-align:middle;"></lord-icon> All Devices</button>
-                            <button class="chip" data-filter="gaming" aria-pressed="false" type="button"><lord-icon src="https://cdn.lordicon.com/kehmfahi.json" trigger="hover" colors="primary:currentColor" style="width:16px;height:16px;vertical-align:middle;"></lord-icon> Gaming Consoles</button>
-                            <button class="chip" data-filter="mobile" aria-pressed="false" type="button"><lord-icon src="https://cdn.lordicon.com/psuzizmf.json" trigger="hover" colors="primary:currentColor" style="width:16px;height:16px;vertical-align:middle;"></lord-icon> Smartphones</button>
-                            <button class="chip" data-filter="audio" aria-pressed="false" type="button"><lord-icon src="https://cdn.lordicon.com/iqagrluv.json" trigger="hover" colors="primary:currentColor" style="width:16px;height:16px;vertical-align:middle;"></lord-icon> Audio & Headsets</button>
-                            <button class="chip" data-filter="components" aria-pressed="false" type="button"><lord-icon src="https://cdn.lordicon.com/dfxesbyu.json" trigger="hover" colors="primary:currentColor" style="width:16px;height:16px;vertical-align:middle;"></lord-icon> PC Hardware</button>
+                        <div class="filters" role="group" aria-label="Filter repair guides">
+                            <button class="chip" data-filter="all" aria-pressed="true" type="button">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                                <span>All Devices</span>
+                                <span class="chip-count" data-count-for="all">12</span>
+                            </button>
+                            <button class="chip" data-filter="gaming" aria-pressed="false" type="button">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M6 12h4M8 10v4M15.5 11h.01M17.5 13h.01"/></svg>
+                                <span>Gaming Consoles</span>
+                                <span class="chip-count" data-count-for="gaming">3</span>
+                            </button>
+                            <button class="chip" data-filter="mobile" aria-pressed="false" type="button">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
+                                <span>Phones &amp; Tablets</span>
+                                <span class="chip-count" data-count-for="mobile">3</span>
+                            </button>
+                            <button class="chip" data-filter="pc" aria-pressed="false" type="button">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>
+                                <span>Laptops &amp; PC Parts</span>
+                                <span class="chip-count" data-count-for="pc">2</span>
+                            </button>
+                            <button class="chip" data-filter="audio" aria-pressed="false" type="button">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="3" y="13" width="4" height="7" rx="1.5"/><rect x="17" y="13" width="4" height="7" rx="1.5"/></svg>
+                                <span>Audio &amp; Earbuds</span>
+                                <span class="chip-count" data-count-for="audio">2</span>
+                            </button>
+                            <button class="chip" data-filter="accessories" aria-pressed="false" type="button">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg>
+                                <span>Peripherals</span>
+                                <span class="chip-count" data-count-for="accessories">2</span>
+                            </button>
                         </div>
                     </aside>
 
                     <div>
                         <div class="account-panel" id="accountSection">
-                            <h3>Your saved guides</h3>
-                            <p>Create an account or sign in to keep your saved repair guides private and available on your devices.</p>
-                            <p id="accountStatus" role="status" aria-live="polite">Connecting to your account…</p>
-                            <form id="accountForm">
-                                <div class="account-grid">
-                                    <div class="field" style="margin-bottom:0">
-                                        <label for="accountEmail">Email</label>
-                                        <input id="accountEmail" type="email" autocomplete="email" required>
-                                    </div>
-                                    <div class="field" style="margin-bottom:0">
-                                        <label for="accountPassword">Password (at least 6 characters)</label>
-                                        <input id="accountPassword" type="password" minlength="6" autocomplete="current-password" required>
-                                    </div>
-                                    <div class="account-actions">
-                                        <button class="btn primary" id="signInButton" type="submit" data-action="sign-in">Sign in</button>
-                                        <button class="btn secondary" id="createAccountButton" type="submit" data-action="sign-up">Create account</button>
+                            <div class="account-bar">
+                                <div class="account-summary">
+                                    <span class="account-badge" aria-hidden="true">
+                                        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                    </span>
+                                    <div>
+                                        <h3>Your saved guides</h3>
+                                        <p id="accountStatus" role="status" aria-live="polite">Connecting to your account…</p>
                                     </div>
                                 </div>
-                            </form>
-                            <button class="btn secondary" id="signOutButton" type="button" hidden>Sign out</button>
-                            <section id="savedGuidesSection" aria-labelledby="savedGuidesHeading" hidden>
-                                <h4 id="savedGuidesHeading">Saved repair guides</h4>
-                                <p id="savedGuidesEmpty">You have not saved any guides yet. Use “Save guide” on a device below.</p>
-                                <ul id="savedGuides"></ul>
-                            </section>
+                                <div class="account-bar-actions">
+                                    <button class="smallbtn" id="accountToggle" type="button" aria-expanded="false" aria-controls="accountDrawer">Sign in / Manage</button>
+                                    <button class="smallbtn" id="signOutButton" type="button" hidden>Sign out</button>
+                                </div>
+                            </div>
+
+                            <div class="account-drawer" id="accountDrawer" hidden>
+                                <p class="account-note">Create an account or sign in to keep your saved repair guides synced across your devices.</p>
+                                <form id="accountForm">
+                                    <div class="account-grid">
+                                        <div class="field">
+                                            <label for="accountEmail">Email</label>
+                                            <input id="accountEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+                                        </div>
+                                        <div class="field">
+                                            <label for="accountPassword">Password (at least 6 characters)</label>
+                                            <input id="accountPassword" type="password" minlength="6" autocomplete="current-password" placeholder="••••••" required>
+                                        </div>
+                                        <div class="account-actions">
+                                            <button class="btn primary" id="signInButton" type="submit" data-action="sign-in">Sign in</button>
+                                            <button class="btn secondary" id="createAccountButton" type="submit" data-action="sign-up">Create account</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <section id="savedGuidesSection" aria-labelledby="savedGuidesHeading" hidden>
+                                    <h4 id="savedGuidesHeading">Saved repair guides</h4>
+                                    <p id="savedGuidesEmpty">You have not saved any guides yet. Use “Save” on any device card below.</p>
+                                    <ul id="savedGuides"></ul>
+                                </section>
+                            </div>
+                        </div>
+
+                        <div class="catalog-meta">
+                            <span id="catalogCount" aria-live="polite">Showing 12 of 12 guides</span>
+                            <button class="reset-link" id="resetFiltersBtn" type="button" hidden>Clear filters</button>
                         </div>
 
                         <div class="products" id="productsGrid" aria-live="polite">
-                            <article class="product" data-category="gaming" data-search="playstation 5 ps5 console gaming games">
-                                <div class="product-art"><span class="art-label">Console / Teardown</span>
+                            <article class="product" data-category="gaming" data-search="playstation 5 ps5 console gaming sony thermal hdmi">
+                                <div class="product-art">
+                                    <span class="art-label">Console / Teardown</span>
+                                    <span class="repair-badge badge-moderate">Moderate</span>
                                     <div class="symbol shape-console" aria-hidden="true"></div>
                                 </div>
                                 <div class="product-info">
-                                    <div class="category">Gaming</div>
+                                    <div class="category">Gaming Console</div>
                                     <h3>PlayStation 5</h3>
-                                    <p>Comprehensive repair guide, thermal paste replacement, and storage expansion steps.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Moderate</span><button class="smallbtn detail" data-product="ps5" type="button">View guides & YouTube <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#f4f5f6" style="width:14px;height:14px;vertical-align:middle;"></lord-icon></button></div>
+                                    <p>Faceplate removal, liquid metal &amp; thermal cleaning, fan maintenance, and M.2 SSD expansion.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="ps5" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </article>
-                            <article class="product" data-category="mobile" data-search="iphone smartphone mobile phone apple">
-                                <div class="product-art"><span class="art-label">Mobile / Screen Fix</span>
+
+                            <article class="product" data-category="gaming" data-search="xbox series x s console gaming microsoft thermal fan power">
+                                <div class="product-art">
+                                    <span class="art-label">Console / Cooling</span>
+                                    <span class="repair-badge badge-moderate">Moderate</span>
+                                    <div class="symbol shape-xbox" aria-hidden="true"></div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="category">Gaming Console</div>
+                                    <h3>Xbox Series X|S</h3>
+                                    <p>Chassis disassembly, heatsink dust clearing, internal PSU diagnostics, and HDMI port checks.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="xbox" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="product" data-category="gaming" data-search="nintendo switch oled lite handheld console joycon battery screen">
+                                <div class="product-art">
+                                    <span class="art-label">Handheld / Modular</span>
+                                    <span class="repair-badge badge-moderate">Moderate</span>
+                                    <div class="symbol shape-switch" aria-hidden="true"></div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="category">Handheld Console</div>
+                                    <h3>Nintendo Switch</h3>
+                                    <p>Joy-Con rail and stick swaps, thermal paste refresh, game card reader, and battery replacement.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="switch" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="product" data-category="mobile" data-search="iphone smartphone mobile phone apple ios screen battery">
+                                <div class="product-art">
+                                    <span class="art-label">Mobile / Screen Fix</span>
+                                    <span class="repair-badge badge-variable">Variable</span>
                                     <div class="symbol shape-phone" aria-hidden="true"></div>
                                 </div>
                                 <div class="product-info">
-                                    <div class="category">Mobile</div>
+                                    <div class="category">Smartphone</div>
                                     <h3>iPhone</h3>
-                                    <p>Step-by-step screen replacement, battery health swaps, and port cleaning procedures.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Variable</span><button class="smallbtn detail" data-product="iphone" type="button">View guides & YouTube <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#f4f5f6" style="width:14px;height:14px;vertical-align:middle;"></lord-icon></button></div>
+                                    <p>Step-by-step display assembly replacement, battery pull-tab swaps, and Lightning/USB-C port cleaning.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="iphone" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </article>
-                            <article class="product" data-category="mobile" data-search="android smartphone mobile phone samsung xiaomi oppo vivo">
-                                <div class="product-art"><span class="art-label">Android / Screen Fix</span>
-                                    <div class="symbol shape-phone" aria-hidden="true"></div>
+
+                            <article class="product" data-category="mobile" data-search="android smartphone mobile phone samsung galaxy pixel xiaomi oppo vivo">
+                                <div class="product-art">
+                                    <span class="art-label">Android / Screen Fix</span>
+                                    <span class="repair-badge badge-variable">Model-specific</span>
+                                    <div class="symbol shape-phone shape-android" aria-hidden="true"></div>
                                 </div>
                                 <div class="product-info">
-                                    <div class="category">Mobile</div>
+                                    <div class="category">Smartphone</div>
                                     <h3>Android phone</h3>
-                                    <p>Screen replacement tutorials for Samsung, Xiaomi, Oppo, Vivo, and other Android models.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Model-specific</span><button class="smallbtn detail" data-product="android" type="button">View guides & YouTube <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#f4f5f6" style="width:14px;height:14px;vertical-align:middle;"></lord-icon></button></div>
+                                    <p>Screen and back-glass replacement tutorials for Samsung Galaxy, Pixel, Xiaomi, and other models.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="android" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </article>
-                            <article class="product" data-category="gaming" data-search="gaming laptop pc notebook computer">
-                                <div class="product-art"><span class="art-label">PC / Portable Upgrade</span>
+
+                            <article class="product" data-category="mobile" data-search="tablet ipad galaxy tab screen battery adhesive digitizer">
+                                <div class="product-art">
+                                    <span class="art-label">Tablet / Display</span>
+                                    <span class="repair-badge badge-difficult">Difficult</span>
+                                    <div class="symbol shape-tablet" aria-hidden="true"></div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="category">Tablet</div>
+                                    <h3>Tablet / iPad</h3>
+                                    <p>Safe heat-assisted adhesive loosening, digitizer cable routing, and large-cell battery precautions.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="tablet" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="product" data-category="pc" data-search="gaming laptop pc notebook computer ram ssd battery thermal">
+                                <div class="product-art">
+                                    <span class="art-label">PC / Portable Upgrade</span>
+                                    <span class="repair-badge badge-moderate">Moderate</span>
                                     <div class="symbol shape-laptop" aria-hidden="true">NX</div>
                                 </div>
                                 <div class="product-info">
-                                    <div class="category">Gaming PCs</div>
+                                    <div class="category">Laptops &amp; PCs</div>
                                     <h3>Gaming laptop</h3>
-                                    <p>Fan cleaning instructions, thermal upgrade paths, and RAM/SSD modular installation manuals.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Moderate</span><button class="smallbtn detail" data-product="laptop" type="button">View guides & YouTube <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#f4f5f6" style="width:14px;height:14px;vertical-align:middle;"></lord-icon></button></div>
+                                    <p>Fan cleaning instructions, thermal paste upgrades, and RAM/NVMe SSD modular installation manuals.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="laptop" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </article>
-                            <article class="product" data-category="audio" data-search="wireless headphones headset audio bluetooth">
-                                <div class="product-art"><span class="art-label">Audio / Battery Swap</span>
+
+                            <article class="product" data-category="pc" data-search="graphics card gpu pc component nvidia amd radeon geforce thermal pads">
+                                <div class="product-art">
+                                    <span class="art-label">PC / Component Repair</span>
+                                    <span class="repair-badge badge-advanced">Advanced</span>
+                                    <div class="symbol shape-gpu" aria-hidden="true"></div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="category">PC Component</div>
+                                    <h3>Graphics card (GPU)</h3>
+                                    <p>Thermal pad thickness matching, heatsink repasting, fan header checks, and power rail diagnostics.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="gpu" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="product" data-category="audio" data-search="wireless headphones headset audio bluetooth earpad battery">
+                                <div class="product-art">
+                                    <span class="art-label">Audio / Battery Swap</span>
+                                    <span class="repair-badge badge-difficult">Difficult</span>
                                     <div class="symbol shape-headphones" aria-hidden="true"></div>
                                 </div>
                                 <div class="product-info">
                                     <div class="category">Audio</div>
                                     <h3>Wireless headphones</h3>
-                                    <p>Ear-pad cushion replacements, battery soldering tutorials, and connection troubleshooting.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Difficult</span><button class="smallbtn detail" data-product="headphones" type="button">View guides & YouTube <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#f4f5f6" style="width:14px;height:14px;vertical-align:middle;"></lord-icon></button></div>
+                                    <p>Ear-pad cushion replacements, headband hinge fixes, battery swaps, and Bluetooth troubleshooting.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="headphones" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </article>
-                            <article class="product" data-category="components" data-search="graphics card gpu pc component gaming graphics">
-                                <div class="product-art"><span class="art-label">PC / Component Repair</span>
-                                    <div class="symbol shape-gpu" aria-hidden="true"></div>
+
+                            <article class="product" data-category="audio" data-search="wireless earbuds airpods galaxy buds charging case audio mesh clean">
+                                <div class="product-art">
+                                    <span class="art-label">Audio / Case &amp; Mesh</span>
+                                    <span class="repair-badge badge-difficult">Difficult</span>
+                                    <div class="symbol shape-earbuds" aria-hidden="true"></div>
                                 </div>
                                 <div class="product-info">
-                                    <div class="category">PC components</div>
-                                    <h3>Graphics card (GPU)</h3>
-                                    <p>Thermal pad replacement guides, fan header diagnostics, and power connector checks.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Advanced</span><button class="smallbtn detail" data-product="gpu" type="button">View guides & YouTube <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#f4f5f6" style="width:14px;height:14px;vertical-align:middle;"></lord-icon></button></div>
+                                    <div class="category">Audio</div>
+                                    <h3>Wireless earbuds</h3>
+                                    <p>Acoustic mesh cleaning, charging contact restoration, pairing resets, and case battery guidance.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="earbuds" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </article>
-                            <article class="product" data-category="gaming" data-search="gaming controller gamepad accessory">
-                                <div class="product-art"><span class="art-label">Accessory / Stick Fix</span>
-                                    <div class="symbol" aria-hidden="true"><lord-icon src="https://cdn.lordicon.com/kehmfahi.json" trigger="hover" colors="primary:#f4f5f6" style="width:48px;height:48px;"></lord-icon></div>
+
+                            <article class="product" data-category="accessories" data-search="gaming controller gamepad dualsense xbox stick drift accessory">
+                                <div class="product-art">
+                                    <span class="art-label">Accessory / Stick Fix</span>
+                                    <span class="repair-badge badge-easy">Easy</span>
+                                    <div class="symbol shape-controller" aria-hidden="true"></div>
                                 </div>
                                 <div class="product-info">
-                                    <div class="category">Accessories</div>
+                                    <div class="category">Peripheral</div>
                                     <h3>Gaming controller</h3>
-                                    <p>Joystick drift calibration, shell housing swaps, and trigger spring replacement instructions.</p>
-                                    <div class="card-bottom"><span class="price-note">Repairability: Easy</span><button class="smallbtn detail" data-product="controller" type="button">View guides & YouTube <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#f4f5f6" style="width:14px;height:14px;vertical-align:middle;"></lord-icon></button></div>
+                                    <p>Joystick drift calibration, potentiometer cleaning, shell swaps, and trigger spring replacement.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="controller" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </article>
+
+                            <article class="product" data-category="accessories" data-search="mechanical keyboard switches keycaps usb pcb stabilizer peripheral">
+                                <div class="product-art">
+                                    <span class="art-label">Peripheral / Switches</span>
+                                    <span class="repair-badge badge-easy">Easy</span>
+                                    <div class="symbol shape-keyboard" aria-hidden="true"></div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="category">Peripheral</div>
+                                    <h3>Mechanical keyboard</h3>
+                                    <p>Hot-swap and soldered switch replacement, chatter fixes, stabilizer tuning, and USB-C port checks.</p>
+                                    <div class="card-bottom">
+                                        <button class="smallbtn detail" data-product="keyboard" type="button">
+                                            View guide
+                                            <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+
                             <div class="empty" id="empty"><strong>No matching guides found.</strong>Try a broader search or choose “All Devices” to reset filters.</div>
                         </div>
                     </div>
@@ -212,7 +436,10 @@
                     <div class="eyebrow">Support bay</div>
                     <h2>Something not working?<br>Start with the basics.</h2>
                     <p>Choose the device and symptom for a practical first-pass checklist modeled after open support wikis. These guides cover common issues.</p>
-                    <div class="warning"><span aria-hidden="true"><lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="hover" colors="primary:#e8c6a6" style="width:20px;height:20px;vertical-align:middle;"></lord-icon></span>
+                    <div class="warning">
+                        <span class="warning-icon" aria-hidden="true">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M12 3L2 20h20L12 3z"/><path d="M12 9v5M12 17h.01"/></svg>
+                        </span>
                         <div><strong>Safety first</strong>Unplug equipment before checking external cables. Never open a power supply or swollen battery. If you smell burning or see liquid damage, stop using the device.</div>
                     </div>
                 </div>
@@ -224,12 +451,14 @@
                             <div class="field"><label for="device">Device</label>
                                 <select id="device" required>
                                     <option value="">Choose a device</option>
-                                    <option value="console">Console</option>
-                                    <option value="phone">Phone</option>
-                                    <option value="laptop">Laptop / PC</option>
-                                    <option value="audio">Headphones / audio</option>
+                                    <option value="console">Home console (PS5 / Xbox)</option>
+                                    <option value="handheld">Handheld console (Switch)</option>
+                                    <option value="phone">Smartphone</option>
+                                    <option value="tablet">Tablet / iPad</option>
+                                    <option value="laptop">Laptop / Desktop PC</option>
+                                    <option value="audio">Headphones / Earbuds</option>
                                     <option value="gpu">Graphics card</option>
-                                    <option value="controller">Controller</option>
+                                    <option value="controller">Controller / Keyboard</option>
                                     <option value="other">Other device</option>
                                 </select>
                             </div>
@@ -247,7 +476,10 @@
                             </div>
                         </div>
                         <div class="field"><label for="notes">Extra details (optional)</label><textarea id="notes" placeholder="What have you tried? Any error message?"></textarea></div>
-                        <button class="btn primary" type="submit">Show suggested checks <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#14200e" style="width:16px;height:16px;vertical-align:middle;"></lord-icon></button>
+                        <button class="btn primary" type="submit">
+                            Show suggested checks
+                            <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </button>
                     </form>
                     <div class="solution" id="solution" role="status" aria-live="polite"></div>
                 </div>
@@ -258,23 +490,23 @@
             <div class="wrap">
                 <div class="head">
                     <div>
-                        <div class="eyebrow">A clearer route through tech</div>
+                        <div class="eyebrow">A clearer route through repairs</div>
                         <h2>Three steps. Less guesswork.</h2>
-                        <p>Use NEXTECH as a starting point for understanding devices and deciding what to check next.</p>
+                        <p>Use NEXTECH as a starting point for diagnosing faults and preparing before you open a device.</p>
                     </div>
                 </div>
                 <div class="howgrid">
                     <article class="howitem"><span class="step">Step 01</span>
                         <h3>Find your device</h3>
-                        <p>Search by product name or filter by category to get to relevant information faster.</p>
+                        <p>Search by device name or filter by category to jump straight to relevant teardown and repair notes.</p>
                     </article>
                     <article class="howitem"><span class="step">Step 02</span>
-                        <h3>Understand the trade-offs</h3>
-                        <p>Review use cases, key checks and compatibility questions before choosing gear.</p>
+                        <h3>Check parts &amp; difficulty</h3>
+                        <p>Review repairability ratings, safety checks, and curated video walkthroughs before ordering tools.</p>
                     </article>
                     <article class="howitem"><span class="step">Step 03</span>
                         <h3>Take the next safe step</h3>
-                        <p>Follow basic troubleshooting checks, then use official support when an issue needs expert help.</p>
+                        <p>Run through basic troubleshooting first, and consult official support when a fault needs specialist tools.</p>
                     </article>
                 </div>
             </div>
@@ -283,10 +515,13 @@
         <section class="section" style="padding-top:0">
             <div class="wrap cta">
                 <div>
-                    <h2>Make your next tech decision a good one.</h2>
-                    <p>Start with the device, the job it needs to do, and the details that matter.</p>
+                    <h2>Ready to bring your hardware back to life?</h2>
+                    <p>Start with the right guide, verify part compatibility, and repair at your own pace.</p>
                 </div>
-                <a class="btn primary" href="#products">Browse the gear desk <lord-icon src="https://cdn.lordicon.com/egiwmihx.json" trigger="hover" colors="primary:#14200e" style="width:16px;height:16px;vertical-align:middle;"></lord-icon></a>
+                <a class="btn primary" href="#products">
+                    Browse repair guides
+                    <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
             </div>
         </section>
     </main>
@@ -295,15 +530,43 @@
         <div class="wrap footerrow">
             <div>
                 <a class="brand" href="#home"><span class="mark">N</span><span>NEX<span class="brand-tail">TECH</span></span></a>
-                <p class="footnote">An independent tech guide demo. Product listings and troubleshooting are starter content, not live inventory, professional repair advice or real-time AI responses.</p>
+                <p class="footnote">An independent repair guide demo. Guides and troubleshooting checklists are starter reference material, not professional repair advice or live store inventory.</p>
             </div>
             <div class="footlinks">
-                <a href="#products">Products</a>
+                <a href="#products">Guides</a>
                 <a href="#troubleshoot">Troubleshooting</a>
-                <a href="#home">Back to top <lord-icon src="https://cdn.lordicon.com/unukghxb.json" trigger="hover" colors="primary:#b5bdc3" style="width:14px;height:14px;vertical-align:middle;"></lord-icon></a>
+                <a href="#home">
+                    Back to top
+                    <svg class="icon icon-xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+                </a>
             </div>
         </div>
     </footer>
+
+    <dialog class="guide-modal" id="guideModal" aria-labelledby="modalTitle">
+        <div class="modal-shell">
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow modal-eyebrow" id="modalCategory">Repair Manual</span>
+                    <h2 id="modalTitle">Device Guide</h2>
+                </div>
+                <div class="modal-header-actions">
+                    <span class="repair-badge" id="modalDifficulty">Moderate</span>
+                    <button class="modal-close" id="modalClose" type="button" aria-label="Close guide">
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer">
+                <p class="modal-disclaimer">Confirm exact model numbers, part specs, and battery safety precautions before starting any repair.</p>
+                <div class="modal-footer-actions">
+                    <button class="smallbtn" id="modalSaveBtn" type="button">Save guide</button>
+                    <button class="btn primary" id="modalDoneBtn" type="button">Done</button>
+                </div>
+            </div>
+        </div>
+    </dialog>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
