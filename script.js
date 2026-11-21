@@ -340,6 +340,25 @@ const defaultDetails = {
     }
 };
 
+const guideMeta = {
+    ps5: { estimatedTime: '~45 min', guideCount: 4 },
+    xbox: { estimatedTime: '~40 min', guideCount: 3 },
+    switch: { estimatedTime: '~30 min', guideCount: 5 },
+    iphone: { estimatedTime: '~35 min', guideCount: 4 },
+    android: { estimatedTime: '~40 min', guideCount: 5 },
+    tablet: { estimatedTime: '~60 min', guideCount: 3 },
+    laptop: { estimatedTime: '~50 min', guideCount: 3 },
+    gpu: { estimatedTime: '~55 min', guideCount: 2 },
+    headphones: { estimatedTime: '~45 min', guideCount: 2 },
+    earbuds: { estimatedTime: '~25 min', guideCount: 2 },
+    controller: { estimatedTime: '~20 min', guideCount: 2 },
+    keyboard: { estimatedTime: '~30 min', guideCount: 2 }
+};
+
+Object.entries(guideMeta).forEach(([key, meta]) => {
+    if (defaultDetails[key]) Object.assign(defaultDetails[key], meta);
+});
+
 const details = Object.fromEntries(
     Object.entries(defaultDetails).map(([key, device]) => [
         key,
@@ -549,7 +568,12 @@ document.querySelectorAll('[data-open-account]').forEach(link => {
 
 function syncSaveButtonState(button, isSaved) {
     if (!button) return;
-    button.textContent = isSaved ? 'Saved' : 'Save';
+    const label = button.querySelector('.save-label');
+    if (label) {
+        label.textContent = isSaved ? 'Saved' : 'Save';
+    } else {
+        button.textContent = isSaved ? 'Saved' : 'Save';
+    }
     button.setAttribute('aria-pressed', String(isSaved));
 }
 
@@ -715,23 +739,35 @@ async function toggleSavedGuide(key, triggerButton = null) {
 }
 
 cards.forEach(card => {
-    const productKey = card.querySelector('.detail')?.dataset.product;
+    const productKey = card.dataset.product || card.querySelector('.detail')?.dataset.product;
     const cardBottom = card.querySelector('.card-bottom');
     if (!productKey || !cardBottom) return;
 
     const saveButton = document.createElement('button');
-    saveButton.className = 'smallbtn save-guide';
+    saveButton.className = 'save-guide';
     saveButton.dataset.product = productKey;
     saveButton.type = 'button';
-    saveButton.textContent = 'Save';
     saveButton.setAttribute('aria-pressed', 'false');
+    saveButton.setAttribute('aria-label', 'Save guide');
+    saveButton.innerHTML = `
+        <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        <span class="save-label">Save</span>
+    `;
     cardBottom.append(saveButton);
 });
 
 document.getElementById('productsGrid').addEventListener('click', event => {
-    const button = event.target.closest('.save-guide');
-    if (!button) return;
-    toggleSavedGuide(button.dataset.product, button);
+    const saveButton = event.target.closest('.save-guide');
+    if (saveButton) {
+        event.stopPropagation();
+        toggleSavedGuide(saveButton.dataset.product, saveButton);
+        return;
+    }
+
+    const card = event.target.closest('.product');
+    if (card?.dataset.product) {
+        openGuideModal(card.dataset.product);
+    }
 });
 
 savedGuidesList.addEventListener('click', event => {
@@ -780,6 +816,16 @@ function renderGuideModalContent(device) {
 
     modalBody.innerHTML = `
         <p class="modal-lead">${esc(device.description)}</p>
+        <div class="modal-meta">
+            <span class="meta-tag">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                ${esc(device.estimatedTime || 'Varies')}
+            </span>
+            <span class="meta-tag">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 0-2 2z"/><path d="M8 7h6"/></svg>
+                ${esc(String(device.guideCount || 1))} guide${device.guideCount === 1 ? '' : 's'}
+            </span>
+        </div>
         <section class="modal-section">
             <h3>Key repair considerations</h3>
             <ul>${device.checks.map(step => `<li>${esc(step)}</li>`).join('')}</ul>
@@ -829,12 +875,6 @@ function closeGuideModal() {
         guideModal.removeAttribute('open');
     }
 }
-
-document.querySelectorAll('.detail').forEach(button => {
-    button.addEventListener('click', () => {
-        openGuideModal(button.dataset.product);
-    });
-});
 
 modalClose.addEventListener('click', closeGuideModal);
 modalDoneBtn.addEventListener('click', closeGuideModal);
