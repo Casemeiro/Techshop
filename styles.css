@@ -16,6 +16,14 @@
     --danger-bg: #2a1515;
     --danger-border: #5c2626;
     --danger-text: #f87171;
+
+    /* Device icon palette — five shared tokens keep every illustration consistent */
+    --ico-line: #d3d9dc;
+    --ico-dim: #8d969e;
+    --ico-fill: #2a3036;
+    --ico-deep: #15181b;
+    --ico-shadow: #0b0d0e;
+    --ico-accent: var(--accent);
 }
 
 * {
@@ -770,6 +778,196 @@ h1 em {
 
 .product:hover .device-svg {
     transform: translateY(-2px) scale(1.03);
+}
+
+/* ---------------------------------------------------------------
+   Device icon micro-interactions
+   Each illustration animates only while its card is hovered or
+   focus-within, so the 12-card grid stays calm at rest.
+   --------------------------------------------------------------- */
+
+.device-svg [class*="ico-"] {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+/* The screen glint is decorative and only visible mid-sweep. */
+.device-svg .ico-glint {
+    opacity: 0;
+}
+
+.device-svg .ico-lid {
+    transform-origin: 50% 100%;
+}
+
+/* Fans pivot on their hub, not on the group's bounding box. */
+.device-svg .ico-fan {
+    transform-box: view-box;
+}
+
+.device-svg .ico-fan-a {
+    transform-origin: 42px 60px;
+}
+
+.device-svg .ico-fan-b {
+    transform-origin: 78px 60px;
+}
+
+@keyframes ico-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes ico-glint-sweep {
+    0% { opacity: 0; transform: translateX(-16px); }
+    35% { opacity: 0.45; }
+    100% { opacity: 0; transform: translateX(16px); }
+}
+
+@keyframes ico-slide-left {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-2.5px); }
+}
+
+@keyframes ico-slide-right {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(2.5px); }
+}
+
+@keyframes ico-flash {
+    0%, 100% { opacity: 1; }
+    45% { opacity: 0.25; }
+}
+
+@keyframes ico-ui-in {
+    0% { opacity: 0; transform: translateY(3px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ico-lid-tilt {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-6deg); }
+}
+
+@keyframes ico-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes ico-cup-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+@keyframes ico-bud-lift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+@keyframes ico-key-wave {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    /* PS5 LED strip + Xbox indicator */
+    .product:hover .ico-led,
+    .product:focus-within .ico-led {
+        animation: ico-pulse 1.6s ease-in-out infinite;
+    }
+
+    /* iPhone / Android screen sweep */
+    .product:hover .ico-glint,
+    .product:focus-within .ico-glint {
+        animation: ico-glint-sweep 1.15s ease-out both;
+    }
+
+    /* Switch Joy-Cons easing out of the rails */
+    .product:hover .ico-joy-l,
+    .product:focus-within .ico-joy-l {
+        animation: ico-slide-left 1.6s ease-in-out infinite;
+    }
+
+    .product:hover .ico-joy-r,
+    .product:focus-within .ico-joy-r {
+        animation: ico-slide-right 1.6s ease-in-out infinite;
+    }
+
+    /* Face buttons */
+    .product:hover .ico-btn,
+    .product:focus-within .ico-btn {
+        animation: ico-flash 1.4s ease-in-out infinite;
+    }
+
+    /* Controller buttons chase each other */
+    .product[data-product="controller"]:hover .ico-btn:nth-of-type(1),
+    .product[data-product="controller"]:focus-within .ico-btn:nth-of-type(1) { animation-delay: 0s; }
+    .product[data-product="controller"]:hover .ico-btn:nth-of-type(2),
+    .product[data-product="controller"]:focus-within .ico-btn:nth-of-type(2) { animation-delay: 0.15s; }
+    .product[data-product="controller"]:hover .ico-btn:nth-of-type(3),
+    .product[data-product="controller"]:focus-within .ico-btn:nth-of-type(3) { animation-delay: 0.3s; }
+    .product[data-product="controller"]:hover .ico-btn:nth-of-type(4),
+    .product[data-product="controller"]:focus-within .ico-btn:nth-of-type(4) { animation-delay: 0.45s; }
+
+    /* Tablet UI waking up */
+    .product:hover .ico-ui,
+    .product:focus-within .ico-ui {
+        animation: ico-ui-in 0.9s ease-out both;
+    }
+
+    /* Laptop lid tilting open */
+    .product:hover .ico-lid,
+    .product:focus-within .ico-lid {
+        animation: ico-lid-tilt 2s ease-in-out infinite;
+    }
+
+    /* GPU fans spinning in opposite directions */
+    .product:hover .ico-fan-a,
+    .product:focus-within .ico-fan-a {
+        animation: ico-spin 1.6s linear infinite;
+    }
+
+    .product:hover .ico-fan-b,
+    .product:focus-within .ico-fan-b {
+        animation: ico-spin 1.6s linear infinite reverse;
+    }
+
+    /* Headphone cups breathing */
+    .product:hover .ico-cup,
+    .product:focus-within .ico-cup {
+        animation: ico-cup-pulse 1.8s ease-in-out infinite;
+    }
+
+    /* Earbuds lifting out of the case */
+    .product:hover .ico-bud,
+    .product:focus-within .ico-bud {
+        animation: ico-bud-lift 1.5s ease-in-out infinite;
+    }
+
+    .product:hover .ico-bud-r,
+    .product:focus-within .ico-bud-r {
+        animation-delay: 0.2s;
+    }
+
+    /* Keyboard ripple travelling across the columns */
+    .product:hover .ico-key,
+    .product:focus-within .ico-key {
+        animation: ico-key-wave 1.3s ease-in-out infinite;
+    }
+
+    .product:hover .ico-key:nth-child(7n+1),
+    .product:focus-within .ico-key:nth-child(7n+1) { animation-delay: 0s; }
+    .product:hover .ico-key:nth-child(7n+2),
+    .product:focus-within .ico-key:nth-child(7n+2) { animation-delay: 0.06s; }
+    .product:hover .ico-key:nth-child(7n+3),
+    .product:focus-within .ico-key:nth-child(7n+3) { animation-delay: 0.12s; }
+    .product:hover .ico-key:nth-child(7n+4),
+    .product:focus-within .ico-key:nth-child(7n+4) { animation-delay: 0.18s; }
+    .product:hover .ico-key:nth-child(7n+5),
+    .product:focus-within .ico-key:nth-child(7n+5) { animation-delay: 0.24s; }
+    .product:hover .ico-key:nth-child(7n+6),
+    .product:focus-within .ico-key:nth-child(7n+6) { animation-delay: 0.3s; }
+    .product:hover .ico-key:nth-child(7n+7),
+    .product:focus-within .ico-key:nth-child(7n+7) { animation-delay: 0.36s; }
 }
 
 .art-meta {
