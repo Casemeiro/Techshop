@@ -32,6 +32,21 @@ jobs:
           test -n "$YOUTUBE_API_KEY"
           printf 'const CONFIG = { YOUTUBE_API_KEY: "%s" };\n' "$YOUTUBE_API_KEY" > config.js
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: bubble-app/package-lock.json
+
+      - name: Install Bubble UI dependencies
+        working-directory: bubble-app
+        run: npm ci
+
+      - name: Build Bubble UI page
+        working-directory: bubble-app
+        run: npm run build
+
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
