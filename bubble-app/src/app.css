@@ -32,11 +32,44 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  flex-wrap: wrap;
   padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgb(127 127 127 / 0.22);
+}
+
+.demo-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: none;
+}
+
+.demo-brand .mark {
+  background: #a7f36b;
+  color: #14200e;
+  padding: 0.1em 0.42em;
+  border-radius: 0.3em;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.demo-brand .brand-tail {
+  color: #a7f36b;
+}
+
+.demo-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 .demo-name {
@@ -70,6 +103,37 @@ body {
 
 .demo-stage > * {
   width: min(420px, 100%);
+}
+
+.demo-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding: 1.25rem 1.5rem 1.75rem;
+  border-top: 1px solid rgb(127 127 127 / 0.22);
+  font-size: 0.82rem;
+  opacity: 0.7;
+}
+
+.demo-foot p {
+  margin: 0;
+}
+
+.demo-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.demo-links a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.demo-links a:hover {
+  text-decoration: underline;
 }
 
 @media (prefers-reduced-motion: reduce) {

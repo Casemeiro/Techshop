@@ -89,15 +89,23 @@ export function App() {
   return (
     <div ref={page} className="page" data-theme={theme} style={PAGE_STYLE[theme]}>
       <div className="demo-bar">
-        <span className="demo-name">Bubble UI</span>
-        <button
-          className="demo-theme"
-          type="button"
-          onClick={() => setTheme(current => (current === 'dark' ? 'light' : 'dark'))}
-          aria-pressed={theme === 'light'}
-        >
-          {theme === 'dark' ? 'Rainbow glass' : 'Light glass'}
-        </button>
+        <a className="demo-brand" href="../" aria-label="NEXTECH home">
+          <span className="mark">N</span>
+          <span>
+            NEX<span className="brand-tail">TECH</span>
+          </span>
+        </a>
+        <div className="demo-actions">
+          <span className="demo-name">Interface lab</span>
+          <button
+            className="demo-theme"
+            type="button"
+            onClick={() => setTheme(current => (current === 'dark' ? 'light' : 'dark'))}
+            aria-pressed={theme === 'light'}
+          >
+            {theme === 'dark' ? 'Rainbow glass' : 'Light glass'}
+          </button>
+        </div>
       </div>
 
       <main className="demo-stage">
@@ -135,6 +143,15 @@ export function App() {
           </div>
         </SoapBubbleMaterial>
       </main>
+
+      <footer className="demo-foot">
+        <p>Soap-film interface components, part of the NEXTECH repair guide.</p>
+        <nav className="demo-links" aria-label="NEXTECH sections">
+          <a href="../#products">Repair catalog</a>
+          <a href="../#troubleshoot">Troubleshooting</a>
+          <a href="../#accountSection">Saved guides</a>
+        </nav>
+      </footer>
     </div>
   );
 }
