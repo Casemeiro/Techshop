@@ -144,6 +144,15 @@ export function App() {
         </SoapBubbleMaterial>
       </main>
 
+      <section className="demo-note" aria-labelledby="future-ui">
+        <h2 id="future-ui">What's next</h2>
+        <p>
+          This is an early look at the interface. In the future, every NEXTECH control — search,
+          filters, saved-guide actions and account settings — will use this liquid-glass material,
+          refracting the catalog behind it and following the page's light or dark theme.
+        </p>
+      </section>
+
       <footer className="demo-foot">
         <p>Soap-film interface components, part of the NEXTECH repair guide.</p>
         <nav className="demo-links" aria-label="NEXTECH sections">

@@ -105,6 +105,27 @@ body {
   width: min(420px, 100%);
 }
 
+.demo-note {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 2.75rem;
+  text-align: center;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  opacity: 0.65;
+}
+
+.demo-note h2 {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.demo-note p {
+  margin: 0;
+}
+
 .demo-foot {
   display: flex;
   flex-wrap: wrap;
